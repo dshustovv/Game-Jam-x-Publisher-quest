@@ -13,9 +13,11 @@ Download: https://github.com/dshustov-xslplayer/game-jam-x-publisher-quest/relea
 
 ## Three ways to upload
 
-1. **Claude Code plugin** (needs Claude Code). In Claude Code run:
+1. **Claude Code plugin** (needs Claude Code). In Claude Code run these two commands one at a time (wait for the first to finish):
    ```
    /plugin marketplace add dshustov-xslplayer/Game-Jam-x-Publisher-quest
+   ```
+   ```
    /plugin install xsolla-launcher@xsolla-launcher-tools
    ```
    For a step-by-step walkthrough use `/xsolla-launcher-upload-guide`.

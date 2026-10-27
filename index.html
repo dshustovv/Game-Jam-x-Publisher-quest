@@ -346,6 +346,12 @@ html{scroll-behavior:smooth}
                       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">{{ it.cmdTitle }}</span><button type="button" class="xq-btn xq-ico" onClick="{{ it.copy }}" aria-label="Copy command" style="flex:none;display:flex;align-items:center;gap:6px;background:#33454a;color:#ffffff;border:0;border-radius:0;padding:6px 10px;font:600 12px \'Aktiv Grotesk\',system-ui,sans-serif;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><rect x="9" y="9" width="12" height="12"/><path d="M5 15V3h12"/></svg>{{ it.copyLabel }}</button></div>
                       <pre style="white-space:pre-wrap;word-break:break-all;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;color:#d3dcde;user-select:all">{{ it.cmd }}</pre>
                     </div>
+                  </sc-if>
+                  <sc-if value="{{ it.hasCmd2 }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:8px;background:#141d1f;border-left:3px solid #80EAFF;padding:12px 14px">
+                      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">{{ it.cmdTitle2 }}</span><button type="button" class="xq-btn xq-ico" onClick="{{ it.copy2 }}" aria-label="Copy command" style="flex:none;display:flex;align-items:center;gap:6px;background:#33454a;color:#ffffff;border:0;border-radius:0;padding:6px 10px;font:600 12px \'Aktiv Grotesk\',system-ui,sans-serif;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><rect x="9" y="9" width="12" height="12"/><path d="M5 15V3h12"/></svg>{{ it.copyLabel2 }}</button></div>
+                      <pre style="white-space:pre-wrap;word-break:break-all;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;color:#d3dcde;user-select:all">{{ it.cmd2 }}</pre>
+                    </div>
                   </sc-if></div>
                 </div>
                   </div>
@@ -395,6 +401,12 @@ html{scroll-behavior:smooth}
                       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">{{ it.cmdTitle }}</span><button type="button" class="xq-btn xq-ico" onClick="{{ it.copy }}" aria-label="Copy command" style="flex:none;display:flex;align-items:center;gap:6px;background:#33454a;color:#ffffff;border:0;border-radius:0;padding:6px 10px;font:600 12px \'Aktiv Grotesk\',system-ui,sans-serif;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><rect x="9" y="9" width="12" height="12"/><path d="M5 15V3h12"/></svg>{{ it.copyLabel }}</button></div>
                       <pre style="white-space:pre-wrap;word-break:break-all;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;color:#d3dcde;user-select:all">{{ it.cmd }}</pre>
                     </div>
+                  </sc-if>
+                  <sc-if value="{{ it.hasCmd2 }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:8px;background:#141d1f;border-left:3px solid #80EAFF;padding:12px 14px">
+                      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">{{ it.cmdTitle2 }}</span><button type="button" class="xq-btn xq-ico" onClick="{{ it.copy2 }}" aria-label="Copy command" style="flex:none;display:flex;align-items:center;gap:6px;background:#33454a;color:#ffffff;border:0;border-radius:0;padding:6px 10px;font:600 12px \'Aktiv Grotesk\',system-ui,sans-serif;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><rect x="9" y="9" width="12" height="12"/><path d="M5 15V3h12"/></svg>{{ it.copyLabel2 }}</button></div>
+                      <pre style="white-space:pre-wrap;word-break:break-all;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;color:#d3dcde;user-select:all">{{ it.cmd2 }}</pre>
+                    </div>
                   </sc-if></div>
                 </div>
                   </div>
@@ -442,6 +454,12 @@ html{scroll-behavior:smooth}
                     <div style="display:flex;flex-direction:column;gap:8px;background:#141d1f;border-left:3px solid #80EAFF;padding:12px 14px">
                       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">{{ it.cmdTitle }}</span><button type="button" class="xq-btn xq-ico" onClick="{{ it.copy }}" aria-label="Copy command" style="flex:none;display:flex;align-items:center;gap:6px;background:#33454a;color:#ffffff;border:0;border-radius:0;padding:6px 10px;font:600 12px \'Aktiv Grotesk\',system-ui,sans-serif;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><rect x="9" y="9" width="12" height="12"/><path d="M5 15V3h12"/></svg>{{ it.copyLabel }}</button></div>
                       <pre style="white-space:pre-wrap;word-break:break-all;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;color:#d3dcde;user-select:all">{{ it.cmd }}</pre>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ it.hasCmd2 }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:8px;background:#141d1f;border-left:3px solid #80EAFF;padding:12px 14px">
+                      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">{{ it.cmdTitle2 }}</span><button type="button" class="xq-btn xq-ico" onClick="{{ it.copy2 }}" aria-label="Copy command" style="flex:none;display:flex;align-items:center;gap:6px;background:#33454a;color:#ffffff;border:0;border-radius:0;padding:6px 10px;font:600 12px \'Aktiv Grotesk\',system-ui,sans-serif;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><rect x="9" y="9" width="12" height="12"/><path d="M5 15V3h12"/></svg>{{ it.copyLabel2 }}</button></div>
+                      <pre style="white-space:pre-wrap;word-break:break-all;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;color:#d3dcde;user-select:all">{{ it.cmd2 }}</pre>
                     </div>
                   </sc-if>
                   <sc-if value="{{ it.isDl }}" hint-placeholder-val="{{ false }}">
@@ -540,6 +558,12 @@ html{scroll-behavior:smooth}
                     <div style="display:flex;flex-direction:column;gap:8px;background:#141d1f;border-left:3px solid #80EAFF;padding:12px 14px">
                       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">{{ it.cmdTitle }}</span><button type="button" class="xq-btn xq-ico" onClick="{{ it.copy }}" aria-label="Copy command" style="flex:none;display:flex;align-items:center;gap:6px;background:#33454a;color:#ffffff;border:0;border-radius:0;padding:6px 10px;font:600 12px \'Aktiv Grotesk\',system-ui,sans-serif;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><rect x="9" y="9" width="12" height="12"/><path d="M5 15V3h12"/></svg>{{ it.copyLabel }}</button></div>
                       <pre style="white-space:pre-wrap;word-break:break-all;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;color:#d3dcde;user-select:all">{{ it.cmd }}</pre>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ it.hasCmd2 }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:8px;background:#141d1f;border-left:3px solid #80EAFF;padding:12px 14px">
+                      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px"><span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">{{ it.cmdTitle2 }}</span><button type="button" class="xq-btn xq-ico" onClick="{{ it.copy2 }}" aria-label="Copy command" style="flex:none;display:flex;align-items:center;gap:6px;background:#33454a;color:#ffffff;border:0;border-radius:0;padding:6px 10px;font:600 12px \'Aktiv Grotesk\',system-ui,sans-serif;cursor:pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><rect x="9" y="9" width="12" height="12"/><path d="M5 15V3h12"/></svg>{{ it.copyLabel2 }}</button></div>
+                      <pre style="white-space:pre-wrap;word-break:break-all;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.6;color:#d3dcde;user-select:all">{{ it.cmd2 }}</pre>
                     </div>
                   </sc-if></div>
                 </div>
@@ -1045,9 +1069,11 @@ class Component extends DCLogic {
     if (P === 'plugin') {
       upload = [
         manual('u1', 'Install the Claude Code plugin',
-          'Open Claude Code and run the two commands below, one after another. The first adds the quest marketplace, the second installs the plugin. It brings the /xsolla-launcher-upload skill, its step-by-step version /xsolla-launcher-upload-guide and the uploader agent. Restart Claude Code if it asks you to.',
-          { hasCmd: true, cmdTitle: 'Claude Code: add the marketplace, then install',
-            cmd: '/plugin marketplace add dshustov-xslplayer/Game-Jam-x-Publisher-quest\n/plugin install xsolla-launcher@xsolla-launcher-tools' }),
+          'Open Claude Code and run the two commands below one at a time: paste the first, press Enter, wait until it finishes, then paste the second. The first adds the quest marketplace, the second installs the plugin. It brings the /xsolla-launcher-upload skill, its step-by-step version /xsolla-launcher-upload-guide and the uploader agent. Restart Claude Code if it asks you to.',
+          { hasCmd: true, cmdTitle: 'Step 1 in Claude Code: add the marketplace',
+            cmd: '/plugin marketplace add dshustov-xslplayer/Game-Jam-x-Publisher-quest',
+            cmdTitle2: 'Step 2, after step 1 finishes: install the plugin',
+            cmd2: '/plugin install xsolla-launcher@xsolla-launcher-tools' }),
         manual('u2', 'Run /xsolla-launcher-upload',
           'Open Claude Code and type /xsolla-launcher-upload (in the list it shows as xsolla-launcher:xsolla-launcher-upload). Then give Claude your game file or folder, the game name and your API key when it asks. The build must be for this computer (' + (M ? 'macOS' : 'Windows') + '). Claude puts the build in Draft and stops one step before launcher generation. Prefer to click through yourself? Use /xsolla-launcher-upload-guide.'),
         manual('u3', 'Read the summary', 'Claude ends with the result, the start file and a short list of clicks for Player Account. Keep it for stage 3. This path gives no receipt, so tick the box yourself when the summary says the upload is done.')
@@ -1093,6 +1119,8 @@ class Component extends DCLogic {
       it.linkIsExt = !!(it.hasLink && !it.linkIsDl);
       it.copyLabel = self.state.copied === it.id ? 'Copied' : 'Copy';
       it.copy = function () { self.copyText(it.id, it.cmd || ''); };
+      it.hasCmd2 = !!it.cmd2; it.copyLabel2 = self.state.copied === it.id + 'b' ? 'Copied' : 'Copy';
+      it.copy2 = function () { self.copyText(it.id + 'b', it.cmd2 || ''); };
     });
     function count(list) { return list.filter(function (x) { return x.done; }).length; }
     var cr = count(register), cp = count(prepare), cu = count(upload), cv = count(verify);
