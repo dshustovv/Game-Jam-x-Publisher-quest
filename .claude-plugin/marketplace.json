@@ -1,0 +1,13 @@
+{
+  "name": "xsolla-launcher-tools",
+  "owner": { "name": "Dmitriy Shustov" },
+  "metadata": { "description": "Claude Code tools for delivering games through Xsolla Player" },
+  "plugins": [
+    {
+      "name": "xsolla-launcher",
+      "source": "./plugins/xsolla-launcher",
+      "description": "Upload a game build to Xsolla Player: agent, /upload-game command and skills",
+      "version": "1.1.1"
+    }
+  ]
+}

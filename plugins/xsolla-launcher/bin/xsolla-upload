@@ -1,0 +1,27 @@
+#!/bin/bash
+# Plugin entry point: runs the upload script for this computer's OS.
+#   macOS          -> skills/xsolla-launcher-upload/scripts/bl_upload.sh (same arguments)
+#   Windows (Git Bash / MSYS, the shell Claude Code uses on Windows) -> bl_upload.ps1, --kebab args translated to -Pascal
+# Usage: xsolla-upload --game <file> --name "<Game>" [--platform mac|win|both] [--game-mac … --game-win …] [--prepare-only] …
+# The API key is read from the XSOLLA_BL_API_KEY environment variable.
+HERE="$(cd "$(dirname "$0")/.." && pwd)"
+SCRIPTS="$HERE/skills/xsolla-launcher-upload/scripts"
+case "$(uname -s)" in
+  Darwin|Linux) exec bash "$SCRIPTS/bl_upload.sh" "$@";;
+  MINGW*|MSYS*|CYGWIN*)
+    args=()
+    while [ $# -gt 0 ]; do
+      case "$1" in
+        --prepare-only) args+=("-PrepareOnly"); shift; continue;;
+        --game) k=-Game;; --game-mac) k=-GameMac;; --game-win) k=-GameWin;; --platform) k=-Platform;;
+        --loader) k=-Loader;; --name) k=-Name;; --descr) k=-Descr;; --stage) k=-Stage;; --workdir) k=-WorkDir;;
+        --ignore) k=-Ignore;; --retry-count) k=-RetryCount;; --retry-timeout) k=-RetryTimeout;; --chunk-size) k=-ChunkSize;;
+        *) echo "unknown argument: $1"; exit 1;;
+      esac
+      v="$2"; shift 2
+      case "$k" in -Game|-GameMac|-GameWin|-Loader|-WorkDir|-Ignore) [ -e "$v" ] && v="$(cygpath -w "$v")";; esac
+      args+=("$k" "$v")
+    done
+    exec powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(cygpath -w "$SCRIPTS/bl_upload.ps1")" "${args[@]}";;
+  *) echo "RESULT: FAILED: unsupported OS $(uname -s)"; exit 1;;
+esac
