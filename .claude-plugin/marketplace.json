@@ -1,6 +1,6 @@
 {
   "name": "xsolla-launcher-tools",
-  "owner": { "name": "Dmitriy Shustov" },
+  "owner": { "name": "Xsolla" },
   "metadata": { "description": "Claude Code tools for delivering games through Xsolla Player" },
   "plugins": [
     {
