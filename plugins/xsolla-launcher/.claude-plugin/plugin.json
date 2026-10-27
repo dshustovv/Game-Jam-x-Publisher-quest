@@ -1,6 +1,6 @@
 {
   "name": "xsolla-launcher",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Upload games to Xsolla Player with Build Loader from Claude Code: any archive format, macOS/Windows/both, stop before or after launcher generation. Agent + /upload-game command + skills.",
   "author": { "name": "Xsolla" },
   "keywords": ["xsolla", "launcher", "build-loader", "gamedev", "upload"],

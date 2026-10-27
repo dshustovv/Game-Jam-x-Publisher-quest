@@ -1,5 +1,6 @@
 ---
 name: xsolla-launcher-upload
+user-invocable: false
 description: Upload a game build to Xsolla Player for the user, end-to-end, from their own terminal (Claude Code) — take their game archive (macOS .app, Windows .exe build, or both), game name and launcher API key; find and run Build Loader, put the build in Draft and bring them to one step before launcher generation (configurable stop point — check, upload, ready or launcher — launcher download and install only on request), telling them exactly what to click in Player Account. Use whenever someone wants to upload, deliver, patch or update a game in Xsolla Player / Player Account, mentions Build Loader, build_loader, BuildLoader.zip, a launcher API key or "launcher ID", Get installer / launcher build, or writes "загрузи игру в лаунчер Xsolla" — even if they only drop an archive and a key. Without terminal access on the user's machine (claude.ai, Cowork) switch to the step-by-step guide in references/guide_mode.md.
 ---
 

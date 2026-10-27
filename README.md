@@ -18,6 +18,7 @@ Download: https://github.com/dshustov-xslplayer/game-jam-x-publisher-quest/relea
    /plugin marketplace add dshustov-xslplayer/Game-Jam-x-Publisher-quest
    /plugin install xsolla-launcher@xsolla-launcher-tools
    ```
+   For a step-by-step walkthrough use `/upload-guide`.
    Then `/upload-game "<game file or folder>" "<Game name>" [mac|win|both] [check|upload|ready|launcher]`.
    Set the API key as an environment variable (`XSOLLA_BL_API_KEY`) before starting Claude Code; do not paste it into the chat.
 2. **App**: `xsolla-upload.zip` (see above). The only path that prints a receipt for the quest page.
