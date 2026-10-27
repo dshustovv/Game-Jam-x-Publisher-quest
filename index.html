@@ -940,7 +940,7 @@ class Component extends DCLogic {
     this.markDownloaded('u1');
     this.setState({ dlMsg: this.state.os === 'win'
       ? 'Unzip it, then double-click Xsolla Upload.bat. If SmartScreen appears: More info, then Run anyway.'
-      : 'Unzip it, then double-click Xsolla Upload.command. If macOS blocks it: System Settings, Privacy & Security, Open Anyway.' });
+      : 'Unzip it, then double-click Xsolla Upload.command. If macOS blocks it, add the app to the exceptions: System Settings, Privacy & Security, Open Anyway.' });
   }
   renderVals() {
     var self = this;
@@ -995,8 +995,8 @@ class Component extends DCLogic {
     ];
     var upload = [
       dlGate(manual('u1', M ? 'Get the upload app for Mac' : 'Get the upload app for Windows',
-        M ? 'Save xsolla-upload.zip, unzip it and double-click Xsolla Upload.command. It needs Python 3 (macOS offers to install it on the first run). If macOS says it could not verify the file, that is expected: the app is not notarized by Apple. Open System Settings, Privacy & Security, scroll down and click Open Anyway, or use the Terminal command below.'
-          : 'Save xsolla-upload.zip, unzip it and double-click Xsolla Upload.bat. It needs Python 3 from python.org (tick Add python.exe to PATH). If Windows SmartScreen appears, click More info, then Run anyway, or use the PowerShell command below.', {
+        M ? 'Save xsolla-upload.zip, unzip it and double-click Xsolla Upload.command. It needs Python 3 (macOS offers to install it on the first run). If macOS says it could not verify the file, that is expected: the app is not notarized by Apple. Open System Settings, Privacy & Security, scroll down and click Open Anyway. This adds Xsolla Upload.command to the exceptions, so it starts normally next time. If security software still blocks it, add the app to its allowed list. You can also use the Terminal command below. Have access to Claude Code? You can use its plugin instead of this app.'
+          : 'Save xsolla-upload.zip, unzip it and double-click Xsolla Upload.bat. It needs Python 3 from python.org (tick Add python.exe to PATH). If Windows SmartScreen appears, click More info, then Run anyway, or use the PowerShell command below. Have access to Claude Code? You can use its plugin instead of this app.', {
         hasCmd: true,
         cmdTitle: M ? 'Mac, optional: download, unlock and start in one command (Terminal)' : 'Windows, optional: download and start in one command (PowerShell)',
         cmd: M ? 'cd ~/Downloads && curl -fsSLO ' + ZIP + ' && unzip -oq xsolla-upload.zip && xattr -dr com.apple.quarantine xsolla-upload && open "xsolla-upload/Xsolla Upload.command"'
@@ -1016,7 +1016,7 @@ class Component extends DCLogic {
     ];
     var scenario = M ? [
       { title: 'Build Loader', text: 'BuildLoader.zip for macOS, macOS 12.4 or newer. The tool is Mac/build_loader.' },
-      { title: 'Upload app', text: 'Xsolla Upload.command. macOS may ask you to allow it: Privacy & Security, Open Anyway.' },
+      { title: 'Upload app', text: 'Xsolla Upload.command. macOS may ask you to add it to the exceptions: Privacy & Security, Open Anyway.' },
       { title: 'Installer', text: 'Only a standalone installer is generated for macOS.' }
     ] : [
       { title: 'Build Loader', text: 'BuildLoader.zip for Windows, Windows 10 64-bit. The tool is Win\\build_loader.exe.' },
