@@ -1075,7 +1075,8 @@ class Component extends DCLogic {
             cmdTitle2: 'Step 2, after step 1 finishes: install the plugin',
             cmd2: '/plugin install xsolla-launcher@xsolla-launcher-tools' }),
         manual('u2', 'Run /xsolla-launcher-upload',
-          'Open Claude Code and type /xsolla-launcher-upload (in the list it shows as xsolla-launcher:xsolla-launcher-upload). Then give Claude your game file or folder, the game name and your API key when it asks. The build must be for this computer (' + (M ? 'macOS' : 'Windows') + '). Claude puts the build in Draft and stops one step before launcher generation. Prefer to click through yourself? Use /xsolla-launcher-upload-guide.'),
+          'Open Claude Code, run the command below and give Claude your game, its name and the API key when it asks. The build must be for ' + (M ? 'macOS' : 'Windows') + '.',
+          { hasCmd: true, cmdTitle: 'Claude Code: run', cmd: '/xsolla-launcher-upload' }),
         manual('u3', 'Read the summary', 'Claude ends with the result, the start file and a short list of clicks for Player Account. Keep it for stage 3. This path gives no receipt, so tick the box yourself when the summary says the upload is done.')
       ];
     } else if (P === 'skills') {
@@ -1086,8 +1087,9 @@ class Component extends DCLogic {
             cmd: M ? 'mkdir -p ~/.claude/skills && cd ~/Downloads && unzip -oq xsolla-skills.zip -d ~/.claude/skills'
                    : 'New-Item -ItemType Directory -Force "$env:USERPROFILE\\.claude\\skills" | Out-Null; Expand-Archive "$env:USERPROFILE\\Downloads\\xsolla-skills.zip" -DestinationPath "$env:USERPROFILE\\.claude\\skills" -Force',
             isDl: true, dlHref: SKZ, dlLabel: 'Download xsolla-skills.zip', dlMsg: this.state.dlMsg, download: function () { self.download(); } })),
-        manual('u2', 'Ask Claude to upload your game',
-          'Open Claude Code and type /xsolla-launcher-upload, then give it your game file or folder, the game name and your API key when it asks. Prefer to do the clicks yourself? Use /xsolla-launcher-upload-guide for a step-by-step walkthrough. Claude puts the build in Draft and stops one step before launcher generation.'),
+        manual('u2', 'Run /xsolla-launcher-upload',
+          'Open Claude Code, run the command below and give Claude your game, its name and the API key when it asks. The build must be for ' + (M ? 'macOS' : 'Windows') + '.',
+          { hasCmd: true, cmdTitle: 'Claude Code: run', cmd: '/xsolla-launcher-upload' }),
         manual('u3', 'Read the summary', 'Claude ends with the result, the start file and a short list of clicks for Player Account. Keep it for stage 3. This path gives no receipt, so tick the box yourself when the summary says the upload is done.')
       ];
     }
