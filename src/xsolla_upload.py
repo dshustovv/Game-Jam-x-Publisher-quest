@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""xsolla-upload — upload a game build to Xsolla Launcher with Build Loader. No AI needed.
+"""xsolla-upload — upload a game build to Xsolla Player with Build Loader. No AI needed.
 
 Run without arguments for a guided wizard, or use subcommands:
   xsolla-upload upload --game <file> --name "<Game>" [--platform mac|win|both] [--until check|upload|ready|launcher]
@@ -28,7 +28,7 @@ import urllib.parse
 import urllib.request
 import zipfile
 
-VERSION = "1.1.0"
+VERSION = "1.1.1"
 IS_MAC = sys.platform == "darwin"
 IS_WIN = os.name == "nt"
 TEST_ANY_OS = bool(os.environ.get("XU_TEST_ANY_OS"))   # test hook: allow running the upload on Linux with a stub
@@ -63,11 +63,15 @@ MSG = {
     "ask_second": ("Path to the build for the other OS (Enter = none) ", "Путь к билду для второй ОС (Enter — нет) "),
     "ask_name": ("Game name", "Название игры"),
     "ask_until": ("How far to go: check / upload / ready / launcher", "До какого этапа: check / upload / ready / launcher"),
-    "ask_key": ("API key (Publisher Account > Launcher > Edit launcher > Games > Set up > Builds > Game builds): ",
+    "ask_key": ("API key (Player Account > Launcher > Edit launcher > Games > Set up > Builds > Game builds): ",
                 "API key (Личный кабинет > Launcher > Edit launcher > Games > Set up > Builds > Game builds): "),
+    "use_env": ("Found XSOLLA_BL_API_KEY in your environment (%s). Use it? [Y/n] ", "Найден XSOLLA_BL_API_KEY в окружении (%s). Использовать? [Y/n] "),
+    "use_saved": ("A saved API key for this game was found (%s). Enter = use it, n = type another key, f = forget it: ",
+                  "Найден сохранённый ключ этой игры (%s). Enter — использовать, n — ввести другой, f — забыть: "),
+    "key_forgot": ("Saved key removed.", "Сохранённый ключ удалён."),
     "ask_go": ("Upload now? [Y/n] ", "Загружать? [Y/n] "),
     "ask_remember": ("Remember the key for this game on this computer? [y/N] ", "Запомнить ключ этой игры на этом компьютере? [y/N] "),
-    "until_help": ("check = only verify the build · upload = upload to Draft · ready = upload + what to fill in Publisher Account "
+    "until_help": ("check = only verify the build · upload = upload to Draft · ready = upload + what to fill in Player Account "
                    "(stops one step before launcher generation) · launcher = including the generation steps",
                    "check — только проверить билд · upload — загрузить в Draft · ready — загрузить и подсказать, что заполнить "
                    "в кабинете (за шаг до генерации лаунчера) · launcher — включая генерацию"),
@@ -79,7 +83,7 @@ MSG = {
                   "Загрузка — первая отправляет игру целиком, следующие только патчи. Не закрывайте окно."),
     "ok_check": ("The build is ready to upload.", "Билд готов к загрузке."),
     "ok_upload": ("Uploaded to Draft — only testers see it.", "Загружено в Draft — видят только тестировщики."),
-    "next": ("Next in Publisher Account", "Дальше в личном кабинете"),
+    "next": ("Next in Player Account", "Дальше в личном кабинете"),
     "stop_ready": ("Stop here: the next step is Generate installer (Launcher > Edit launcher > Settings > Launcher build > "
                    "Generate in Draft). It is unstable right now — run it when you decide.",
                    "Здесь остановка: следующий шаг — Generate installer (Launcher > Edit launcher > Settings > Launcher build > "
@@ -356,7 +360,7 @@ def find_loader(arg, tooldir):
             if arg: break
     if not arg:
         raise Fail("Build Loader not found",
-                   "download BuildLoader.zip (%s) in Publisher Account > your game > Set up > Builds > Game builds into Downloads"
+                   "download BuildLoader.zip (%s) in Player Account > your game > Set up > Builds > Game builds into Downloads"
                    % ("Windows" if IS_WIN else "Mac"), 2)
     if os.path.isfile(arg):
         rmtree(tooldir); os.makedirs(tooldir); unzip(arg, tooldir); arg = tooldir
@@ -428,18 +432,41 @@ def save_key(slug, key):
         return r.returncode == 0
     return False
 
+def forget_saved_key(slug):
+    try:
+        if IS_MAC:
+            run(["security", "delete-generic-password", "-s", "xsolla-upload", "-a", slug], stderr=subprocess.DEVNULL)
+        elif IS_WIN:
+            p = _key_store_path(slug)
+            if os.path.isfile(p): os.remove(p)
+    except Exception:
+        pass
+
+def mask_key(k):
+    return (k[:4] + "..." + k[-3:]) if len(k) >= 8 else "***"
+
 def resolve_key(a, slug, interactive):
-    if os.environ.get("XSOLLA_BL_API_KEY"): return os.environ["XSOLLA_BL_API_KEY"].strip(), "env"
+    ask = bool(interactive and sys.stdin.isatty())
+    envk = (os.environ.get("XSOLLA_BL_API_KEY") or "").strip()
+    if envk:   # never use a key silently in the guided mode: say where it comes from
+        if not ask or input(T("use_env") % mask_key(envk)).strip().lower() not in ("n", "no", "н", "нет"):
+            return envk, "env"
     if a.key_file:
         with open(clean_path(a.key_file), encoding="utf-8") as f: return f.read().strip(), "file"
     k = load_saved_key(slug)
-    if k: return k, "saved"
-    if interactive and sys.stdin.isatty():
+    if k:
+        if not ask: return k, "saved"
+        ans = input(T("use_saved") % mask_key(k)).strip().lower()
+        if ans in ("f", "forget", "а"):
+            forget_saved_key(slug); print(T("key_forgot"))
+        elif ans not in ("n", "no", "н", "нет"):
+            return k, "saved"
+    if ask:
         k = getpass.getpass(T("ask_key")).strip()
         if k: return k, "prompt"
     raise Fail("API key is missing",
                "set XSOLLA_BL_API_KEY, use --key-file, or run interactively "
-               "(Publisher Account > Launcher > Edit launcher > Games > Set up > Builds > Game builds > API key)", 2)
+               "(Player Account > Launcher > Edit launcher > Games > Set up > Builds > Game builds > API key)", 2)
 
 # ----------------------------------------------------------------------------------------------------------- checklist
 def checklist(until, descr, apps, exes):
@@ -769,7 +796,7 @@ def load_config(path):
     return c
 
 def wizard():
-    print("xsolla-upload %s — %s" % (VERSION, "загрузка игры в Xsolla Launcher" if LANG == "ru" else "upload a game to Xsolla Launcher"))
+    print("xsolla-upload %s — %s" % (VERSION, "загрузка игры в Xsolla Player" if LANG == "ru" else "upload a game to Xsolla Player"))
     g = clean_path(input(T("ask_game")))
     while not os.path.exists(g):
         print("  not found / не найдено: %s" % g); g = clean_path(input(T("ask_game")))
@@ -794,7 +821,7 @@ def wizard():
     return a
 
 def build_parser():
-    p = argparse.ArgumentParser(prog="xsolla-upload", description="Upload a game build to Xsolla Launcher with Build Loader.")
+    p = argparse.ArgumentParser(prog="xsolla-upload", description="Upload a game build to Xsolla Player with Build Loader.")
     p.add_argument("--version", action="version", version="xsolla-upload " + VERSION)
     sub = p.add_subparsers(dest="cmd")
     u = sub.add_parser("upload", help="prepare and upload a build")
