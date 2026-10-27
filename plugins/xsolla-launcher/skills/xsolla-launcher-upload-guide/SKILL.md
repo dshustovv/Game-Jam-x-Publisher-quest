@@ -58,6 +58,7 @@ in their words ("только проверь", "только загрузи", "�
 
 ## Step 2 — Player Account (they click)
 
+0. Sign in at https://xsolla.com/for/free-to-play-pc/account/login (the account is at xsolla.com/for/free-to-play-pc).
 1. PA → project → **Launcher** → **Edit launcher** → **Games**: the game exists? If not — add it.
 2. Game → **Set up** → **Builds › Game builds**:
    - download **BuildLoader.zip** for **their computer's** OS (not the game's) into Downloads;

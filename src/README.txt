@@ -10,7 +10,7 @@ Windows: double-click "Xsolla Upload.bat"
 Needs Python 3.8+ (macOS offers to install it on first run; Windows: python.org).
 Before you start: put Build Loader into Downloads (no need to unzip it): either the public archive
 https://cdn.xsolla.net/launcher/build/Partners/build_loader.zip (holds the Mac and Windows tools)
-or BuildLoader.zip from Player Account (Launcher > Edit launcher > Games > Set up > Builds > Game builds).
+or BuildLoader.zip from Player Account at xsolla.com/for/free-to-play-pc (Launcher > Edit launcher > Games > Set up > Builds > Game builds).
 Then copy the API key of your game from the same page.
 
 When the upload finishes the app prints a receipt (also copied to the clipboard and saved on the

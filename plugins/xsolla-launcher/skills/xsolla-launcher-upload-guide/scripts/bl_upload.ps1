@@ -39,7 +39,7 @@ if ($Platform -eq "both" -and -not ($GameMac -and $GameWin)) { Fail "-Platform b
 foreach ($g in @($Game, $GameMac, $GameWin)) { if ($g -and -not (Test-Path -LiteralPath $g)) { Fail "game not found: $g" } }
 if (-not ($Game -or $GameMac)) { Fail "-Game is required" }
 if (-not $PrepareOnly -and -not $env:XSOLLA_BL_API_KEY) {
-  Fail "XSOLLA_BL_API_KEY is empty (Player Account > your game > Set up > Builds > Game builds > API key)"
+  Fail "XSOLLA_BL_API_KEY is empty (Player Account (sign in at xsolla.com/for/free-to-play-pc) > your game > Set up > Builds > Game builds > API key)"
 }
 $first = if ($Game) { $Game } else { $GameMac }
 if (-not $Name) { $Name = [IO.Path]::GetFileNameWithoutExtension($first) -replace '\.app$', '' }
@@ -131,7 +131,7 @@ if (-not $PrepareOnly) {
          Where-Object { $_.Name -match 'build.?loader' -and $_.Name -notmatch 'mac' } | Select-Object -First 1
     if ($z) { $Loader = $z.FullName }
   }
-  if (-not $Loader) { Fail "Build Loader not found. Download BuildLoader.zip (Windows) in Player Account > your game > Set up > Builds > Game builds, save it to Downloads and rerun" }
+  if (-not $Loader) { Fail "Build Loader not found. Download BuildLoader.zip (Windows) in Player Account (sign in at xsolla.com/for/free-to-play-pc) > your game > Set up > Builds > Game builds, save it to Downloads and rerun" }
   if (Test-Path -LiteralPath $Loader -PathType Leaf) {
     Remove-Item -Recurse -Force $ToolDir -ErrorAction SilentlyContinue
     Expand-Archive -LiteralPath $Loader -DestinationPath $ToolDir -Force

@@ -63,7 +63,7 @@ MSG = {
     "ask_second": ("Path to the build for the other OS (Enter = none) ", "Путь к билду для второй ОС (Enter — нет) "),
     "ask_name": ("Game name", "Название игры"),
     "ask_until": ("How far to go: check / upload / ready / launcher", "До какого этапа: check / upload / ready / launcher"),
-    "ask_key": ("API key (Player Account > Launcher > Edit launcher > Games > Set up > Builds > Game builds): ",
+    "ask_key": ("API key (Player Account (sign in at xsolla.com/for/free-to-play-pc) > Launcher > Edit launcher > Games > Set up > Builds > Game builds): ",
                 "API key (Личный кабинет > Launcher > Edit launcher > Games > Set up > Builds > Game builds): "),
     "use_env": ("Found XSOLLA_BL_API_KEY in your environment (%s). Use it? [Y/n] ", "Найден XSOLLA_BL_API_KEY в окружении (%s). Использовать? [Y/n] "),
     "use_saved": ("A saved API key for this game was found (%s). Enter = use it, n = type another key, f = forget it: ",
@@ -363,7 +363,7 @@ def find_loader(arg, tooldir):
             if arg: break
     if not arg:
         raise Fail("Build Loader not found",
-                   "download BuildLoader.zip (%s) in Player Account > your game > Set up > Builds > Game builds into Downloads"
+                   "download BuildLoader.zip (%s) in Player Account (sign in at xsolla.com/for/free-to-play-pc) > your game > Set up > Builds > Game builds into Downloads"
                    % ("Windows" if IS_WIN else "Mac"), 2)
     if os.path.isfile(arg):
         rmtree(tooldir); os.makedirs(tooldir); unzip(arg, tooldir); arg = tooldir
@@ -469,7 +469,7 @@ def resolve_key(a, slug, interactive):
         if k: return k, "prompt"
     raise Fail("API key is missing",
                "set XSOLLA_BL_API_KEY, use --key-file, or run interactively "
-               "(Player Account > Launcher > Edit launcher > Games > Set up > Builds > Game builds > API key)", 2)
+               "(Player Account (sign in at xsolla.com/for/free-to-play-pc) > Launcher > Edit launcher > Games > Set up > Builds > Game builds > API key)", 2)
 
 # ----------------------------------------------------------------------------------------------------------- checklist
 def checklist(until, descr, apps, exes):

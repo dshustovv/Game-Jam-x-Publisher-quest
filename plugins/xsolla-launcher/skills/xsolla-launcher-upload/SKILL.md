@@ -29,7 +29,7 @@ Build Loader is a native macOS/Windows program; it must run on the user's machin
 |---|---|
 | Game build | `.zip`, `.7z`, `.rar`, `.tar(.gz)`, `.dmg`, a folder, a `.app`, a portable single `.exe`, or a Windows **installer** `.exe`/`.msi`. For a two-OS release: one input per OS. If they give only a file name, find it: `find ~/Desktop ~/Downloads ~/Documents -maxdepth 3 -iname '<name>*'` (Spotlight `mdfind` misses unindexed folders) |
 | Game name | used in the build description and work folder |
-| **API key** | PA → project → **Launcher** → **Edit launcher** → **Games** → **Set up** next to the game → **Builds › Game builds** → **API key (launcher ID)**. One key per game in PA; if the game does not exist yet they add it first (Edit launcher → Games) |
+| **API key** | Sign in at https://xsolla.com/for/free-to-play-pc/account/login, then PA → project → **Launcher** → **Edit launcher** → **Games** → **Set up** next to the game → **Builds › Game builds** → **API key (launcher ID)**. One key per game in PA; if the game does not exist yet they add it first (Edit launcher → Games) |
 
 **Input formats** — the script handles them and reports `SUMMARY input_format=`:
 - `.zip`, `.tar*` — built in. `.dmg` — mounted with `hdiutil` on macOS (the `.app` and files next to it are copied,

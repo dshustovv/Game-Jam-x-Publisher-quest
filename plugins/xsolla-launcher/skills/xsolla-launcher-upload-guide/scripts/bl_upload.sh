@@ -64,7 +64,7 @@ SLUG=$(printf '%s' "$NAME" | LC_ALL=C tr -c 'A-Za-z0-9_-' '_' | sed 's/__*/_/g; 
 [ -n "$SLUG" ] || SLUG="game"
 [ "$STAGE" = "draft" ] || [ "$STAGE" = "none" ] || fail "--stage must be draft or none"
 [ "$PREP_ONLY" -eq 1 ] || [ -n "${XSOLLA_BL_API_KEY:-}" ] || \
-  fail "XSOLLA_BL_API_KEY is empty (Player Account > your game > Set up > Builds > Game builds > API key)"
+  fail "XSOLLA_BL_API_KEY is empty (Player Account (sign in at xsolla.com/for/free-to-play-pc) > your game > Set up > Builds > Game builds > API key)"
 is_safe_path "$WORKDIR" || fail "workdir must be Latin letters/digits without spaces: $WORKDIR (use --workdir)"
 TS=$(date +%Y%m%d-%H%M%S)
 
@@ -190,7 +190,7 @@ if [ "$PREP_ONLY" -eq 0 ]; then
     LOADER=$(find "$HOME/Downloads" "$HOME/Desktop" -maxdepth 2 -type f -iname '*build*loader*.zip' 2>/dev/null \
              | grep -iv win | head -1)
   fi
-  [ -n "$LOADER" ] || fail "Build Loader not found. Download BuildLoader.zip (Mac) in Player Account > your game > Set up > Builds > Game builds, save it to Downloads and rerun"
+  [ -n "$LOADER" ] || fail "Build Loader not found. Download BuildLoader.zip (Mac) in Player Account (sign in at xsolla.com/for/free-to-play-pc) > your game > Set up > Builds > Game builds, save it to Downloads and rerun"
   if [ -f "$LOADER" ]; then
     rm -rf "$TOOLDIR"; mkdir -p "$TOOLDIR"; unzip_to "$LOADER" "$TOOLDIR" || fail "cannot unpack Build Loader: $LOADER"
     LOADER="$TOOLDIR"

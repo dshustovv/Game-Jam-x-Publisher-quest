@@ -18,7 +18,7 @@ $2"; shift 2;;
 done
 fail() { echo "RESULT: FAILED: $*"; exit 1; }
 summary() { echo "SUMMARY $1=$2"; }
-[ -n "$URLS" ] || fail "--url is required (Player Account > Launcher > Edit launcher > Settings > Launcher build > Get installer)"
+[ -n "$URLS" ] || fail "--url is required (Player Account (sign in at xsolla.com/for/free-to-play-pc) > Launcher > Edit launcher > Settings > Launcher build > Get installer)"
 TS=$(date +%Y%m%d-%H%M%S); DIR="$OUT/$TS"; mkdir -p "$DIR" || fail "cannot create $DIR"
 summary out_dir "$DIR"
 OK=0; BAD=0; LAST=""
