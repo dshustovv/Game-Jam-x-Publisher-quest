@@ -1,10 +1,9 @@
 ---
 name: xsolla-launcher-upload-guide
-user-invocable: false
 description: Step-by-step guide that walks a person through uploading their game to Xsolla Player when Claude cannot run commands on their computer (claude.ai, Cowork, mobile) — one step per message, ready-to-run commands for their Mac (zsh) or Windows (PowerShell), a downloadable upload script, reading their output and fixing errors, then Player Account clicks up to a chosen stop point (by default one step before launcher generation; launcher download and testing only on request). Use whenever someone wants to upload, update or patch a game build in Xsolla Player / Player Account, mentions Build Loader, BuildLoader.zip, a launcher API key, Get installer, or "загрузить игру в лаунчер Xsolla", and you cannot run commands on their own Mac/PC (a cloud/Linux sandbox does not count). If your shell is their own computer (Claude Code), use the xsolla-launcher-upload skill instead.
 ---
 
-# Xsolla Player upload — step-by-step mode
+# Xsolla Player Uploader — step-by-step mode
 
 You cannot run anything on the user's computer, so you are their guide: **one step per message**, each with exactly
 what to click or paste, what they should see, and what to send back. Wait for their reply before the next step.

@@ -1,6 +1,6 @@
 <!-- Same content as the standalone skill "xsolla-launcher-upload-guide". Paths scripts/ and references/ are relative to this skill. -->
 
-# Xsolla Player upload — step-by-step mode
+# Xsolla Player Uploader — step-by-step mode
 
 You cannot run anything on the user's computer, so you are their guide: **one step per message**, each with exactly
 what to click or paste, what they should see, and what to send back. Wait for their reply before the next step.

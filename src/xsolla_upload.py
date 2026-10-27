@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""xsolla-upload — upload a game build to Xsolla Player with Build Loader. No AI needed.
+"""xsolla-upload (Xsolla Player Uploader) — upload a game build to Xsolla Player with Build Loader. No AI needed.
 
 Run without arguments for a guided wizard, or use subcommands:
   xsolla-upload upload --game <file> --name "<Game>" [--platform mac|win|both] [--until check|upload|ready|launcher]
@@ -28,7 +28,7 @@ import urllib.parse
 import urllib.request
 import zipfile
 
-VERSION = "1.1.1"
+VERSION = "1.1.2"
 IS_MAC = sys.platform == "darwin"
 IS_WIN = os.name == "nt"
 TEST_ANY_OS = bool(os.environ.get("XU_TEST_ANY_OS"))   # test hook: allow running the upload on Linux with a stub
@@ -134,7 +134,10 @@ def safe_dir(p):
 def default_workdir():
     if IS_WIN and os.path.isdir("C:\\"):
         return "C:\\xsolla_builds"
-    return os.path.join(HOME, "xsolla_builds")
+    d = os.path.join(HOME, "xsolla_builds")
+    if not safe_dir(d):   # home folder with spaces or non-Latin letters (e.g. /Users/Ivan Petrov): Build Loader needs a plain path
+        d = "/Users/Shared/xsolla_builds" if IS_MAC else "/tmp/xsolla_builds"
+    return d
 
 def mb(n):
     return int(n / 1048576)
@@ -506,7 +509,7 @@ def cmd_upload(a, interactive=False):
                             os.path.basename(first.rstrip("/\\")), flags=re.I)
     slug = slugify(name)
     workdir = os.path.abspath(a.workdir or default_workdir())
-    if not safe_dir(workdir): raise Fail("work folder must be Latin letters/digits without spaces: %s" % workdir, "use --workdir")
+    if not safe_dir(workdir): raise Fail("work folder must be Latin letters/digits without spaces: %s" % workdir, "run again with --workdir /Users/Shared/xsolla_builds (Windows: --workdir C:\\xsolla_builds)")
     ts = time.strftime("%Y%m%d-%H%M%S")
     build = os.path.join(workdir, slug, "build")          # stable per game -> later uploads are patches
     logdir = os.path.join(workdir, slug, "logs", ts)
@@ -796,7 +799,7 @@ def load_config(path):
     return c
 
 def wizard():
-    print("xsolla-upload %s — %s" % (VERSION, "загрузка игры в Xsolla Player" if LANG == "ru" else "upload a game to Xsolla Player"))
+    print("xsolla-upload %s — %s" % (VERSION, "Xsolla Player Uploader: загрузка игры" if LANG == "ru" else "Xsolla Player Uploader: upload a game"))
     g = clean_path(input(T("ask_game")))
     while not os.path.exists(g):
         print("  not found / не найдено: %s" % g); g = clean_path(input(T("ask_game")))

@@ -1007,7 +1007,7 @@ class Component extends DCLogic {
       }, extra || {});
     }
     var register = [
-      manual('r1', 'Sign up in Player Account', 'Open publisher.xsolla.com/signup and create an account. The password needs at least 8 characters with a digit, a capital and a lowercase letter. Every sign-in sends a confirmation code (two-factor authentication).', { hasLink: true, link: 'https://publisher.xsolla.com/', linkText: 'Open publisher.xsolla.com' }),
+      manual('r1', 'Sign up in Player Account', 'Open xsolla.com/for/free-to-play-pc and sign up to create your account. The password needs at least 8 characters with a digit, a capital and a lowercase letter. Every sign-in sends a confirmation code (two-factor authentication).', { hasLink: true, link: 'https://xsolla.com/for/free-to-play-pc/', linkText: 'Open xsolla.com sign-up' }),
       manual('r2', 'Fill in your account details', 'Enter your first and last name, your role in the company, the company name (your full name if you sign up as an individual) and your country or region. A link to your game is optional. Click Next step.'),
       manual('r3', 'Create your first project', 'Choose the type Game, enter the project name in English, pick release platforms, monetization, development stage, and genre and engine. Click Finish. Your project appears in the side menu and its project ID sits next to the name.')
     ];
@@ -1023,7 +1023,7 @@ class Component extends DCLogic {
     ];
     var P = this.state.path || 'app';
     var upload = [
-      dlGate(manual('u1', M ? 'Get the upload app for Mac' : 'Get the upload app for Windows',
+      dlGate(manual('u1', M ? 'Get Xsolla Player Uploader for Mac' : 'Get Xsolla Player Uploader for Windows',
         M ? 'Save xsolla-upload.zip, unzip it and double-click Xsolla Upload.command. It needs Python 3 (macOS offers to install it on the first run). If macOS says it could not verify the file, that is expected: the app is not notarized by Apple. Open System Settings, Privacy & Security, scroll down and click Open Anyway. This adds Xsolla Upload.command to the exceptions, so it starts normally next time. If security software still blocks it, add the app to its allowed list. You can also use the Terminal command below. Have Claude Code? Pick the plugin or skills path at the top of this stage instead.'
           : 'Save xsolla-upload.zip, unzip it and double-click Xsolla Upload.bat. It needs Python 3 from python.org (tick Add python.exe to PATH). If Windows SmartScreen appears, click More info, then Run anyway, or use the PowerShell command below. Have Claude Code? Pick the plugin or skills path at the top of this stage instead.', {
         hasCmd: true,
@@ -1037,22 +1037,19 @@ class Component extends DCLogic {
       auto('u3', 'Paste the receipt', 'When the upload finishes the app prints a receipt, copies it to your clipboard and saves it on your Desktop. Paste it in the verification box below.')
     ];
     var SKZ = 'https://raw.githubusercontent.com/dshustov-xslplayer/game-jam-x-publisher-quest/main/xsolla-skills.zip';
-    var KEYENV = M ? 'export XSOLLA_BL_API_KEY="paste-your-key-here"' : '$env:XSOLLA_BL_API_KEY="paste-your-key-here"';
-    var KEYNOTE = ' Do not paste the key into the chat: set it as an environment variable in the terminal where you start Claude Code, with the command below.';
+    var KEYNOTE = ' Keep it private: do not share it in screenshots or in your game code.';
     if (P !== 'app') {
       prepare[2] = manual('p3', 'Copy your API key (launcher ID)',
-        'In Player Account open Games, Set up next to your game, Builds, Game builds and copy the API key (launcher ID) with the plus icon.' + KEYNOTE + ' Claude finds Build Loader itself; if it cannot, it asks you to put BuildLoader.zip for your OS into Downloads.',
-        { hasCmd: true, cmdTitle: M ? 'Mac: set the key (Terminal)' : 'Windows: set the key (PowerShell)', cmd: KEYENV });
+        'In Player Account open Games, Set up next to your game, Builds, Game builds and copy the API key (launcher ID) with the plus icon.' + KEYNOTE + ' Claude finds Build Loader itself; if it cannot, it asks you to put BuildLoader.zip for your OS into Downloads.');
     }
     if (P === 'plugin') {
       upload = [
         manual('u1', 'Install the Claude Code plugin',
-          'Open Claude Code and run the two commands below, one after another. The first adds the quest marketplace, the second installs the plugin. It brings the /upload-game command, the uploader agent and both skills. Restart Claude Code if it asks you to.',
+          'Open Claude Code and run the two commands below, one after another. The first adds the quest marketplace, the second installs the plugin. It brings the /xsolla-launcher-upload skill, its step-by-step version /xsolla-launcher-upload-guide and the uploader agent. Restart Claude Code if it asks you to.',
           { hasCmd: true, cmdTitle: 'Claude Code: add the marketplace, then install',
             cmd: '/plugin marketplace add dshustov-xslplayer/Game-Jam-x-Publisher-quest\n/plugin install xsolla-launcher@xsolla-launcher-tools' }),
-        manual('u2', 'Run /upload-game on your build',
-          'Start Claude Code in the same terminal where you set the key, then run the command below with your game file or folder and your game name. The platform must match this computer (' + (M ? 'mac' : 'win') + '). Claude puts the build in Draft and stops one step before launcher generation.',
-          { hasCmd: true, cmdTitle: 'Claude Code: upload', cmd: '/upload-game "<path to your game>" "My Jam Game" ' + (M ? 'mac' : 'win') + ' ready' }),
+        manual('u2', 'Run /xsolla-launcher-upload',
+          'Open Claude Code and type /xsolla-launcher-upload (in the list it shows as xsolla-launcher:xsolla-launcher-upload). Then give Claude your game file or folder, the game name and your API key when it asks. The build must be for this computer (' + (M ? 'macOS' : 'Windows') + '). Claude puts the build in Draft and stops one step before launcher generation. Prefer to click through yourself? Use /xsolla-launcher-upload-guide.'),
         manual('u3', 'Read the summary', 'Claude ends with the result, the start file and a short list of clicks for Player Account. Keep it for stage 3. This path gives no receipt, so tick the box yourself when the summary says the upload is done.')
       ];
     } else if (P === 'skills') {
@@ -1064,7 +1061,7 @@ class Component extends DCLogic {
                    : 'New-Item -ItemType Directory -Force "$env:USERPROFILE\\.claude\\skills" | Out-Null; Expand-Archive "$env:USERPROFILE\\Downloads\\xsolla-skills.zip" -DestinationPath "$env:USERPROFILE\\.claude\\skills" -Force',
             isDl: true, dlHref: SKZ, dlLabel: 'Download xsolla-skills.zip', dlMsg: this.state.dlMsg, download: function () { self.download(); } })),
         manual('u2', 'Ask Claude to upload your game',
-          'Start Claude Code in the terminal where you set the key and type /xsolla-launcher-upload, then give it your game file or folder and the game name. Prefer to do the clicks yourself? Use /xsolla-launcher-upload-guide for a step-by-step walkthrough. Claude puts the build in Draft and stops one step before launcher generation.'),
+          'Open Claude Code and type /xsolla-launcher-upload, then give it your game file or folder, the game name and your API key when it asks. Prefer to do the clicks yourself? Use /xsolla-launcher-upload-guide for a step-by-step walkthrough. Claude puts the build in Draft and stops one step before launcher generation.'),
         manual('u3', 'Read the summary', 'Claude ends with the result, the start file and a short list of clicks for Player Account. Keep it for stage 3. This path gives no receipt, so tick the box yourself when the summary says the upload is done.')
       ];
     }
@@ -1151,8 +1148,8 @@ class Component extends DCLogic {
       skipAllLabel: (['p3', 'u2', 'u3'].every(function (id) { return map[id]; }) && !(v && v.all)) ? 'Undo: reopen steps 1.3, 2.2 and 2.3' : 'Mark steps 1.3, 2.2 and 2.3 as done manually',
       skipAll: function () { self.skipAll(); },
       paths: [
-        { id: 'plugin', title: 'Claude Code plugin', tag: 'EASIEST', text: 'Install once from this repo, then run /upload-game. Needs Claude Code.' },
-        { id: 'app', title: 'App (.command / .bat)', tag: 'RECEIPT', text: 'Double-click Xsolla Upload.command on Mac or .bat on Windows. No Claude Code needed.' },
+        { id: 'plugin', title: 'Claude Code plugin', tag: 'EASIEST', text: 'Install once from this repo, then run /xsolla-launcher-upload. Needs Claude Code.' },
+        { id: 'app', title: 'Xsolla Player Uploader (.command / .bat)', tag: 'RECEIPT', text: 'Double-click Xsolla Upload.command on Mac or .bat on Windows. No Claude Code needed.' },
         { id: 'skills', title: 'Claude Code skills', tag: 'MANUAL SETUP', text: 'Unzip two skills into ~/.claude/skills and run /xsolla-launcher-upload.' }
       ].map(function (x) { var on = P === x.id; return Object.assign(x, { on: on, bg: on ? 'rgba(128,234,255,.10)' : '#233134', border: on ? '#80EAFF' : '#33454a', tagBg: on ? '#80EAFF' : '#9fb0b3', pick: function () { self.setPath(x.id); } }); }),
       uploadTitle: P === 'plugin' ? 'Upload with the plugin' : (P === 'skills' ? 'Upload with skills' : 'Upload with the app'),

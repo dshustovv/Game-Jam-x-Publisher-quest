@@ -1,4 +1,4 @@
-# Xsolla Player: prepare a game build and upload it with Build Loader (Windows host, PowerShell 5.1+).
+# Xsolla Player Uploader: prepare a game build and upload it with Build Loader (Windows host, PowerShell 5.1+).
 #
 # Usage (key via environment variable):
 #   $env:XSOLLA_BL_API_KEY = '<key>'

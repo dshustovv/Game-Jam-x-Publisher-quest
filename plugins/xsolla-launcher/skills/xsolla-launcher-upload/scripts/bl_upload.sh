@@ -1,5 +1,5 @@
 #!/bin/bash
-# Xsolla Player: prepare a game build and upload it with Build Loader (macOS host; bash 3.2 compatible).
+# Xsolla Player Uploader: prepare a game build and upload it with Build Loader (macOS host; bash 3.2 compatible).
 #
 # Game input: .zip .7z .rar .tar(.gz) .dmg, a folder, a .app, a portable .exe, or a Windows installer .exe/.msi
 # (Inno Setup / NSIS / MSI are unpacked when innoextract / 7-Zip is available).
