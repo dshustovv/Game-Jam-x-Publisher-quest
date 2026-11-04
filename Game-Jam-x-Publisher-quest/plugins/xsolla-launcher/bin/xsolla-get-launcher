@@ -1,0 +1,20 @@
+#!/bin/bash
+# Plugin entry point: download + verify (+ --open) the generated launcher installer from a Get installer link.
+# Usage: xsolla-get-launcher --url "<link>" [--url "<link2>"] [--out <dir>] [--open]
+HERE="$(cd "$(dirname "$0")/.." && pwd)"
+SCRIPTS="$HERE/skills/xsolla-launcher-upload/scripts"
+case "$(uname -s)" in
+  Darwin|Linux) exec bash "$SCRIPTS/get_launcher.sh" "$@";;
+  MINGW*|MSYS*|CYGWIN*)
+    urls=""; args=()
+    while [ $# -gt 0 ]; do
+      case "$1" in
+        --url) urls="${urls:+$urls,}$2"; shift 2;;
+        --out) args+=("-Out" "$(cygpath -w "$2")"); shift 2;;
+        --open) args+=("-Open"); shift;;
+        *) echo "unknown argument: $1"; exit 1;;
+      esac
+    done
+    exec powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(cygpath -w "$SCRIPTS/get_launcher.ps1")" -Url "$urls" "${args[@]}";;
+  *) echo "RESULT: FAILED: unsupported OS $(uname -s)"; exit 1;;
+esac
