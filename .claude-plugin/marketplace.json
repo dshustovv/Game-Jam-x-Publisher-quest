@@ -1,0 +1,13 @@
+{
+  "name": "xsolla-launcher-tools",
+  "owner": { "name": "Xsolla" },
+  "metadata": { "description": "Claude Code tools for delivering games through Xsolla Player" },
+  "plugins": [
+    {
+      "name": "xsolla-launcher",
+      "source": "./plugins/xsolla-launcher",
+      "description": "Xsolla Player Uploader: agent and skills for uploading a game build to Xsolla Player",
+      "version": "1.2.1"
+    }
+  ]
+}
