@@ -1036,7 +1036,7 @@ class Component extends DCLogic {
       manual('r3', 'Create your first project', 'Choose the type Game, enter the project name in English, pick release platforms, monetization, development stage, and genre and engine. Click Finish. Your project appears in the side menu and its project ID sits next to the name.')
     ];
     var M = this.state.os !== 'win';
-    var ZIP = 'https://raw.githubusercontent.com/dshustov-xslplayer/game-jam-x-publisher-quest/main/xsolla-upload.zip';
+    var ZIP = 'https://raw.githubusercontent.com/dshustovv/game-jam-x-publisher-quest/main/xsolla-upload.zip';
     var prepare = [
       manual('p1', M ? 'Use a Mac with macOS 12.4 or newer' : 'Use a Windows 10 (64-bit) PC',
         M ? 'Build Loader creates a macOS build on a Mac, so your game archive must contain a .app. Free disk space of about 1.5 times the game size is needed.'
@@ -1060,7 +1060,7 @@ class Component extends DCLogic {
           : 'The app asks for your game (drag the game folder or its .zip into the window), the game name and your API key at a hidden prompt. Keep the game path in Latin letters and shorter than 260 characters, for example C:\\Games\\MyGame. The app checks the build, asks to confirm, then uploads to Draft.'),
       auto('u3', 'Paste the receipt', 'When the upload finishes the app prints a receipt, copies it to your clipboard and saves it on your Desktop. Paste it in the verification box below.')
     ];
-    var SKZ = 'https://raw.githubusercontent.com/dshustov-xslplayer/game-jam-x-publisher-quest/main/xsolla-skills.zip';
+    var SKZ = 'https://raw.githubusercontent.com/dshustovv/game-jam-x-publisher-quest/main/xsolla-skills.zip';
     var KEYNOTE = ' Keep it private: do not share it in screenshots or in your game code.';
     if (P !== 'app') {
       prepare[2] = manual('p3', 'Copy your API key (launcher ID)',
@@ -1071,7 +1071,7 @@ class Component extends DCLogic {
         manual('u1', 'Install the Claude Code plugin',
           'Open Claude Code and run the two commands below one at a time: paste the first, press Enter, wait until it finishes, then paste the second. The first adds the quest marketplace, the second installs the plugin. It brings the /xsolla-launcher-upload skill, its step-by-step version /xsolla-launcher-upload-guide and the uploader agent. Restart Claude Code if it asks you to.',
           { hasCmd: true, cmdTitle: 'Step 1 in Claude Code: add the marketplace',
-            cmd: '/plugin marketplace add dshustov-xslplayer/Game-Jam-x-Publisher-quest',
+            cmd: '/plugin marketplace add dshustovv/Game-Jam-x-Publisher-quest',
             cmdTitle2: 'Step 2, after step 1 finishes: install the plugin',
             cmd2: '/plugin install xsolla-launcher@xsolla-launcher-tools' }),
         manual('u2', 'Run /xsolla-launcher-upload',

@@ -3,19 +3,19 @@
 Upload helper for the Game Jam quest: `xsolla-upload.zip` (Mac: `Xsolla Upload.command`, Windows: `Xsolla Upload.bat`, needs Python 3).
 The app uploads your build to Draft through Build Loader and prints a receipt that the quest page verifies.
 
-Download: https://github.com/dshustov-xslplayer/game-jam-x-publisher-quest/releases/latest/download/xsolla-upload.zip
+Download: https://github.com/dshustovv/game-jam-x-publisher-quest/releases/latest/download/xsolla-upload.zip
 
 `src/` holds the unzipped files for review.
 
 ## Quest page
 
-`index.html` is the quest landing (Stage 0 registration, upload app, receipt check). Open it locally or serve it with GitHub Pages: https://dshustov-xslplayer.github.io/Game-Jam-x-Publisher-quest/
+`index.html` is the quest landing (Stage 0 registration, upload app, receipt check). Open it locally or serve it with GitHub Pages: https://dshustovv.github.io/Game-Jam-x-Publisher-quest/
 
 ## Three ways to upload
 
 1. **Claude Code plugin** (needs Claude Code). In Claude Code run these two commands one at a time (wait for the first to finish):
    ```
-   /plugin marketplace add dshustov-xslplayer/Game-Jam-x-Publisher-quest
+   /plugin marketplace add dshustovv/Game-Jam-x-Publisher-quest
    ```
    ```
    /plugin install xsolla-launcher@xsolla-launcher-tools
@@ -27,3 +27,7 @@ Download: https://github.com/dshustov-xslplayer/game-jam-x-publisher-quest/relea
    Unzip into `~/.claude/skills` (Windows: `%USERPROFILE%\.claude\skills`) and run `/xsolla-launcher-upload`.
 
 The plugin lives in `plugins/xsolla-launcher/`, the marketplace file in `.claude-plugin/marketplace.json`.
+
+## extras/
+- `extras/xsolla-player-prototype/` — прототип вкладок Game Jam и Jam rewards для Xsolla Player (GitHub Pages: `/extras/xsolla-player-prototype/`).
+- `extras/cover/` — обложка квеста.
