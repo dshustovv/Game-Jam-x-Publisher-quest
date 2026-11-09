@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>XCA x Game Jam</title>
-<meta name="description" content="Register in Player Account, upload your jam build to the Xsolla Player and verify it with a receipt.">
+<meta name="description" content="Register in Player Account, upload your jam build to the Xsolla Player with Claude Code, using a plugin or two skills.">
 <link rel="stylesheet" href="ds/xsolla/colors_and_type.css">
 <style>
 body{margin:0;background:#141d1f}
@@ -141,7 +141,7 @@ html{scroll-behavior:smooth}
     <div style="flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:24px">
       <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:none;color:#80EAFF">XCA x Game Jam</span>
       <h1 style="margin:0;font-family:'Pilat Wide',system-ui,sans-serif;font-weight:700;font-size:clamp(36px,5.4vw,68px);line-height:1.04;letter-spacing:-0.03em;color:#FFFFFF;text-wrap:balance">Get your jam build into the Xsolla Player</h1>
-      <p style="margin:0;font-size:19px;line-height:1.5;color:#d3dcde;max-width:520px">Twelve steps take your game from a zip archive to a Draft build that testers can install. Three of them are checked for real: a double-click upload app prints a receipt and this page verifies it.</p>
+      <p style="margin:0;font-size:19px;line-height:1.5;color:#d3dcde;max-width:520px">Twelve steps take your game from a zip archive to a Draft build that testers can install. Claude Code does the upload for you: install a plugin or two skills, run one command and tick the steps as you go.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
         <a class="xq-btn" href="#quest" style="background:#80EAFF;color:#141d1f;text-decoration:none;font-weight:600;font-size:16px;padding:16px 28px;border-radius:0">Start the Battle Path</a>
         <a class="xq-btn" href="#how" style="background:transparent;color:#FFFFFF;text-decoration:none;font-weight:600;font-size:16px;padding:14.5px 26px;border-radius:0;border:1.5px solid #546a6f">See how it works</a>
@@ -149,7 +149,7 @@ html{scroll-behavior:smooth}
     </div>
     <div style="flex:1 1 420px;min-width:0;background:#233134;border:1px solid #33454a;border-radius:0;padding:24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 24px 56px rgba(0,0,0,.6)">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">Example receipt</span>
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">Example run</span>
         <span style="font-size:12px;font-weight:600;color:#141d1f;background:{{ demoPillBg }};border-radius:0;padding:4px 12px;transition:background .3s">{{ demoPill }}</span>
       </div>
       <div style="height:200px;box-sizing:border-box;overflow:auto;background:#141d1f;border:1px solid #33454a;border-radius:0;padding:16px">
@@ -163,7 +163,7 @@ html{scroll-behavior:smooth}
           </div>
         </sc-for>
       </div>
-      <p style="margin:0;font-size:13px;line-height:1.5;color:#9fb0b3;height:40px;overflow:hidden">Live example: the upload app prints this receipt and each check turns green. Paste your own receipt below.</p>
+      <p style="margin:0;font-size:13px;line-height:1.5;color:#9fb0b3;height:40px;overflow:hidden">Live example: Claude runs the upload on your computer and reports each result in chat. You tick the matching steps below.</p>
     </div>
   </section>
 
@@ -198,21 +198,21 @@ html{scroll-behavior:smooth}
         <span class="xq-num" style="background:#ffc380;color:#141d1f">02</span>
         <div style="display:flex;flex-direction:column;gap:12px">
         <h3 style="margin:0;font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.015em">Prepare</h3>
-        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Use a Mac with macOS 12.4 or newer, add the game in Player Account, get the macOS Build Loader (Mac/build_loader) and copy the game’s API key.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Use a Windows 10 (64-bit) PC, add the game in Player Account, get the Windows Build Loader (Win\build_loader.exe) and copy the game’s API key. Keep the game path in Latin letters.</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Use a Mac with macOS 12.4 or newer, add the game in Player Account and copy the game’s API key. Claude finds the Build Loader itself.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Use a Windows 10 (64-bit) PC, add the game in Player Account and copy the game’s API key. Claude finds the Build Loader itself. Keep the game path in Latin letters.</span></div>
         </div>
       </div>
       <div class="xq-card xq-reveal" style="--s:#e84f30;background:#233134;padding:28px;min-height:340px;display:flex;flex-direction:column;justify-content:flex-start;gap:20px">
         <span class="xq-num" style="background:#e84f30;color:#ffffff">03</span>
         <div style="display:flex;flex-direction:column;gap:12px">
         <h3 style="margin:0;font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.015em">Upload</h3>
-        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Double-click Xsolla Upload.command, drag in your .app, type the name and key. It checks the build, then sends it to Draft.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Double-click Xsolla Upload.bat, drag in your game folder, type the name and key. It checks the build, then sends it to Draft.</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Install the plugin or skills, run /xsolla-launcher-upload and give Claude your .app, the name and the key. It checks the build, then sends it to Draft.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Install the plugin or skills, run /xsolla-launcher-upload and give Claude your game folder, the name and the key. It checks the build, then sends it to Draft.</span></div>
         </div>
       </div>
       <div class="xq-card xq-reveal" style="--s:#80EAFF;background:#233134;padding:28px;min-height:340px;display:flex;flex-direction:column;justify-content:flex-start;gap:20px">
         <span class="xq-num" style="background:#80EAFF;color:#141d1f">04</span>
         <div style="display:flex;flex-direction:column;gap:12px">
         <h3 style="margin:0;font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.015em">Verify</h3>
-        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Paste the receipt for an automatic check, find the build row in Player Account and set the .app start file. One standalone installer follows.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Paste the receipt for an automatic check, find the build row in Player Account and set the .exe start file. Web and standalone installers follow.</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Read Claude’s summary, find the build row in Player Account and set the .app start file. One standalone installer follows.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Read Claude’s summary, find the build row in Player Account and set the .exe start file. Web and standalone installers follow.</span></div>
         </div>
       </div>
     </div>
@@ -279,7 +279,7 @@ html{scroll-behavior:smooth}
           <div style="display:flex;flex-direction:column;gap:16px;background:#141d1f;border:1px solid #33454a;border-radius:0;padding:20px">
             <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">Your path</span><span style="font-size:14px;color:#d3dcde">Pick how you want to upload. Stage 2 changes to match. You can switch any time.</span></div>
             <div role="group" aria-label="Upload path" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
-              <sc-for list="{{ paths }}" as="pt" hint-placeholder-count="3">
+              <sc-for list="{{ paths }}" as="pt" hint-placeholder-count="2">
                 <button type="button" class="xq-btn" onClick="{{ pt.pick }}" aria-pressed="{{ pt.on }}" style="text-align:left;display:flex;flex-direction:column;gap:6px;background:{{ pt.bg }};border:1.5px solid {{ pt.border }};border-radius:0;padding:14px 16px;cursor:pointer;color:#d3dcde;font-family:'Aktiv Grotesk',system-ui,sans-serif">
                   <span style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:700;font-size:16px;color:#FFFFFF">{{ pt.title }}</span><span style="font-size:11px;font-weight:600;padding:2px 8px;background:{{ pt.tagBg }};color:#141d1f">{{ pt.tag }}</span></span>
                   <span style="font-size:13px;line-height:1.45">{{ pt.text }}</span>
@@ -291,7 +291,7 @@ html{scroll-behavior:smooth}
           <!-- Scenario switch -->
           <div style="display:flex;flex-direction:column;gap:16px;background:#141d1f;border:1px solid #33454a;border-radius:0;padding:20px">
             <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
-              <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">Your scenario</span><span style="font-size:14px;color:#d3dcde">Pick the computer you upload from. Loader, upload app and installers differ by OS.</span></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">Your scenario</span><span style="font-size:14px;color:#d3dcde">Pick the computer you upload from. Build Loader, the build you upload and installers differ by OS.</span></div>
               <div role="group" aria-label="Operating system" style="display:inline-flex;background:#233134;border:1px solid #33454a;border-radius:0;padding:4px;gap:4px">
                 <button type="button" class="xq-btn" onClick="{{ setMac }}" aria-pressed="{{ isMac }}" style="border:0;border-radius:0;padding:9px 20px;font:600 14px 'Aktiv Grotesk',system-ui,sans-serif;cursor:pointer;background:{{ macBg }};color:{{ macFg }}">macOS</button>
                 <button type="button" class="xq-btn" onClick="{{ setWin }}" aria-pressed="{{ isWin }}" style="border:0;border-radius:0;padding:9px 20px;font:600 14px 'Aktiv Grotesk',system-ui,sans-serif;cursor:pointer;background:{{ winBg }};color:{{ winFg }}">Windows</button>
@@ -475,49 +475,14 @@ html{scroll-behavior:smooth}
             </sc-for>
             </div>
 
-            <sc-if value="{{ noReceipt }}" hint-placeholder-val="{{ false }}">
-            <div style="background:#233134;border:1px dashed #546a6f;border-radius:0;padding:16px 20px;display:flex;flex-direction:column;gap:6px">
-              <span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:16px">No receipt on this path</span>
-              <span style="font-size:14px;color:#d3dcde">{{ noReceiptText }}</span>
-            </div>
-            </sc-if>
-            <sc-if value="{{ showReceipt }}" hint-placeholder-val="{{ true }}">
             <div style="background:#233134;border:1px solid #33454a;border-radius:0;padding:20px;display:flex;flex-direction:column;gap:16px">
-              <span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:16px">Verification</span>
+              <span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:16px">Check the result in chat</span>
+              <span style="font-size:14px;color:#d3dcde">Claude reports the result in chat. Tick the steps by hand when it says the upload is done. Organizers can still confirm your build in Player Account, Builds, Game builds.</span>
               <label style="display:flex;flex-direction:column;gap:6px">
-                <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">Your game name (type the same name in the app)</span>
+                <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">Your game name (shown on your ticket)</span>
                 <input id="game-name" type="text" value="{{ gameName }}" onChange="{{ onGame }}" placeholder="My Jam Game" style="box-sizing:border-box;width:100%;background:#141d1f;border:1px solid #546a6f;border-radius:0;padding:12px 14px;color:#FFFFFF;font:400 15px 'Aktiv Grotesk',system-ui,sans-serif">
               </label>
-              <label style="display:flex;flex-direction:column;gap:6px">
-                <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">Receipt from the upload app</span>
-                <textarea id="receipt" rows="9" value="{{ receiptText }}" onChange="{{ onReceipt }}" placeholder="XSOLLA-QUEST-RECEIPT v1&#10;run_id=..." style="box-sizing:border-box;width:100%;min-height:150px;resize:vertical;background:#141d1f;border:1px solid #546a6f;border-radius:0;padding:12px 14px;color:#d3dcde;font:400 12.5px/1.6 'JetBrains Mono',ui-monospace,Menlo,monospace"></textarea>
-              </label>
-              <div style="display:flex;flex-direction:column">
-                <sc-for list="{{ checks }}" as="ck" hint-placeholder-count="7">
-                  <div class="{{ ck.cls }}" style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid #33454a;animation-delay:{{ ck.delay }}ms">
-                    <span style="flex:none;min-width:104px;text-align:center;font-size:12px;font-weight:600;border-radius:0;padding:4px 10px;border:1px solid {{ ck.color }};color:{{ ck.color }}">{{ ck.pill }}</span>
-                    <div style="min-width:0;display:flex;flex-direction:column;gap:2px">
-                      <span style="font-weight:600;font-size:15px">{{ ck.label }}</span>
-                      <span style="font-size:13px;color:#9fb0b3;word-break:break-word">{{ ck.detail }}</span>
-                    </div>
-                  </div>
-                </sc-for>
-              </div>
-              <sc-if value="{{ hasSkipAll }}" hint-placeholder-val="{{ false }}">
-                <div style="display:flex;flex-direction:column;gap:8px;background:#233134;border:1px dashed #546a6f;border-radius:0;padding:14px 16px">
-                  <span style="font-size:13px;color:#d3dcde">{{ skipAllNote }}</span>
-                  <div><button type="button" class="xq-btn" onClick="{{ skipAll }}" style="background:transparent;color:#ffc380;border:1.5px solid #ffc380;border-radius:0;padding:8px 16px;font:600 13px 'Aktiv Grotesk',system-ui,sans-serif;cursor:pointer">{{ skipAllLabel }}</button></div>
-                </div>
-              </sc-if>
-              <sc-if value="{{ receiptOk }}" hint-placeholder-val="{{ false }}">
-                <div class="xq-pop" style="display:flex;gap:14px;align-items:flex-start;background:rgba(128,234,255,.08);border:1px solid #80EAFF;border-radius:0;padding:16px 18px">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#80EAFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-7"/></svg>
-                  <div style="display:flex;flex-direction:column;gap:2px"><span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:16px;color:#80EAFF">Receipt accepted</span><span style="font-size:14px;color:#d3dcde;word-break:break-word">{{ receiptSummary }}</span></div>
-                </div>
-              </sc-if>
-              <p style="margin:0;font-size:13px;color:#9fb0b3">The page checks what the app reports about your upload. A receipt could still be edited by hand, so organizers can confirm winners in Player Account, Builds, Game builds.</p>
             </div>
-            </sc-if>
           </div>
 
           <!-- Stage 3 -->
@@ -756,14 +721,14 @@ var XQ_STAGES = [
 ];
 var XQ_TOTAL = 1100;
 function guessOs() { try { return /win/i.test((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || '') ? 'win' : 'mac'; } catch (e) { return 'mac'; } }
-var DEMO_LINES = ['XSOLLA-QUEST-RECEIPT v1', 'builder_version=1.23.0', 'builder_signer=Xsolla (USA), Inc (2FWGTXK3RK)', 'builder_signature_valid=yes', 'key_mask=AB12...xyz', 'init_result=success', 'game_name=My Jam Game', 'game_archive=game.zip', 'platform=__P__', 'update_result=success', 'build_in_list=yes', 'check=2f4ab0fcb681ac48'];
-var DEMO_CHECKS = [['Build Loader came from Xsolla', 3], ['Real API key accepted', 5], ['Game name matches', 6], ['Platform matches your scenario', 8], ['Game uploaded to Draft', 9], ['Build listed by Xsolla', 10], ['Receipt is untouched', 11], ['Receipt is fresh', 11]];
+var DEMO_LINES = ['> /xsolla-launcher-upload', 'Build Loader found in Downloads', 'API key accepted', 'Game: My Jam Game (game.zip)', 'Platform: __P__', 'Checking the build...', 'Uploading to Draft...', 'Upload finished', 'Build is in the Draft list', 'Next: set the start file in Player Account'];
+var DEMO_CHECKS = [['Build Loader found', 1], ['API key accepted', 2], ['Game and name read', 3], ['Platform matches your scenario', 4], ['Build checked', 5], ['Game uploaded to Draft', 7], ['Build listed in Draft', 8]];
 var XQ_RANKS = [[0, 'Jam Rookie'], [200, 'Scout'], [450, 'Build Crafter'], [800, 'Release Master'], [1100, 'Launcher Legend']];
 class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = { done: {}, gameName: '', receipt: '', verdict: null, dlMsg: '', sound: true,
-      recent: {}, recentStages: {}, toast: '', toastId: 0, burst: '', burstId: 0, xpPop: '', demoN: 0, cloudPop: '', copied: '', opened: {}, os: guessOs(), path: 'app' };
+      recent: {}, recentStages: {}, toast: '', toastId: 0, burst: '', burstId: 0, xpPop: '', demoN: 0, cloudPop: '', copied: '', opened: {}, os: guessOs(), path: 'plugin' };
   }
   componentDidMount() {
     var self = this;
@@ -777,8 +742,7 @@ class Component extends DCLogic {
       if (raw) {
         var s = JSON.parse(raw);
         var os0 = (s.os === 'win' || s.os === 'mac') ? s.os : this.state.os;
-        this.setState({ done: s.done || {}, gameName: s.gameName || '', receipt: s.receipt || '', sound: s.sound !== false, os: os0, opened: s.opened || {}, path: (s.path === 'plugin' || s.path === 'skills') ? s.path : 'app' });
-        if (s.receipt) this.runVerify(s.receipt, s.gameName || '', true);
+        this.setState({ done: s.done || {}, gameName: s.gameName || '', receipt: '', sound: s.sound !== false, os: os0, opened: s.opened || {}, path: s.path === 'skills' ? 'skills' : 'plugin' });
       }
     } catch (e) {}
   }
@@ -989,10 +953,7 @@ class Component extends DCLogic {
   }
   download() {
     this.markDownloaded('u1');
-    if (this.state.path === 'skills') { this.setState({ dlMsg: 'Now unzip it into your Claude Code skills folder with the command below.' }); return; }
-    this.setState({ dlMsg: this.state.os === 'win'
-      ? 'Unzip it, then double-click Xsolla Upload.bat. If SmartScreen appears: More info, then Run anyway.'
-      : 'Unzip it, then double-click Xsolla Upload.command. If macOS blocks it, add the app to the exceptions: System Settings, Privacy & Security, Open Anyway.' });
+    this.setState({ dlMsg: 'Now unzip it into your Claude Code skills folder with the command below.' });
   }
   renderVals() {
     var self = this;
@@ -1018,55 +979,25 @@ class Component extends DCLogic {
       return Object.assign(it, { isManual: false, isAuto: true, autoBorder: d ? '#80EAFF' : '#546a6f', autoBg: d ? '#80EAFF' : 'transparent',
         pill: d ? 'Downloaded' : 'Click Download', pillColor: d ? '#80EAFF' : '#9fb0b3', canSkip: false, skipLabel: '', skip: function () {} });
     }
-    function auto(id, title, body, extra) {
-      var vm = { p3: !!(v && v.c1 && v.c2), u2: !!(v && v.run), u3: !!(v && v.all) };
-      var ver = !!vm[id], skipped = !!manualDone[id] && !ver, ok = !!map[id];
-      return Object.assign(base(id, title, body), {
-        isManual: false, isAuto: true,
-        autoBorder: ok ? (skipped ? '#ffc380' : '#80EAFF') : '#546a6f', autoBg: ok ? (skipped ? '#ffc380' : '#80EAFF') : 'transparent',
-        pill: ver ? 'Verified by receipt' : (skipped ? 'Marked manually' : (v ? 'Check failed' : 'Needs receipt')),
-        pillColor: ver ? '#80EAFF' : (skipped ? '#ffc380' : (v ? '#e84f30' : '#9fb0b3')),
-        canSkip: !ver, skipLabel: skipped ? 'Undo manual mark' : 'Receipt did not work? Mark as done manually',
-        skip: function () { self.toggleItem(id); }
-      }, extra || {});
-    }
     var register = [
       manual('r1', 'Sign up in Player Account', 'Open xsolla.com/for/free-to-play-pc/account/login and sign up to create your account. The password needs at least 8 characters with a digit, a capital and a lowercase letter. Every sign-in sends a confirmation code (two-factor authentication).', { hasLink: true, link: 'https://xsolla.com/for/free-to-play-pc/account/login', linkText: 'Open sign-up and sign-in' }),
       manual('r2', 'Fill in your account details', 'Enter your first and last name, your role in the company, the company name (your full name if you sign up as an individual) and your country or region. A link to your game is optional. Click Next step.'),
       manual('r3', 'Create your first project', 'Choose the type Game, enter the project name in English, pick release platforms, monetization, development stage, and genre and engine. Click Finish. Your project appears in the side menu and its project ID sits next to the name.')
     ];
     var M = this.state.os !== 'win';
-    var ZIP = 'https://raw.githubusercontent.com/dshustovv/game-jam-x-publisher-quest/main/xsolla-upload.zip';
+    var KEYNOTE = ' Keep it private: do not share it in screenshots or in your game code.';
     var prepare = [
       manual('p1', M ? 'Use a Mac with macOS 12.4 or newer' : 'Use a Windows 10 (64-bit) PC',
         M ? 'Build Loader creates a macOS build on a Mac, so your game archive must contain a .app. Free disk space of about 1.5 times the game size is needed.'
           : 'Build Loader creates a Windows build on a Windows PC, so your game folder must contain a .exe in its root. Free disk space of about 1.5 times the game size is needed.'),
       manual('p2', 'Add your game in Player Account', 'Sign in, open your project, then Launcher, Edit launcher, Games. If the game is already on the list, move on.', { hasLink: true, link: 'https://xsolla.com/for/free-to-play-pc/account/login', linkText: 'Open sign-in' }),
-      auto('p3', M ? 'Download Build Loader for macOS and copy your API key' : 'Download Build Loader for Windows and copy your API key',
-        'Games, Set up next to your game, Builds, Game builds. Download it with the button below or click BuildLoader.zip in Player Account for ' + (M ? 'macOS (it unpacks to Mac/build_loader)' : 'Windows (it unpacks to Win\\build_loader.exe)') + ' and keep the zip in Downloads without unzipping (the archive holds both OS tools, the app picks yours). Then copy the API key (launcher ID) with the plus icon. The receipt proves both: Build Loader must carry Xsolla’s signature and Xsolla must accept your key.', { hasLink: true, link: 'https://cdn.xsolla.net/launcher/build/Partners/build_loader.zip', linkText: M ? 'Download Build Loader for macOS (zip from Xsolla CDN)' : 'Download Build Loader for Windows (zip from Xsolla CDN)' })
+      manual('p3', 'Copy your API key (launcher ID)',
+        'In Player Account open Games, Set up next to your game, Builds, Game builds and copy the API key (launcher ID) with the plus icon.' + KEYNOTE + ' Claude finds Build Loader itself; if it cannot, it asks you to put BuildLoader.zip for your OS into Downloads.')
     ];
-    var P = this.state.path || 'app';
-    var upload = [
-      dlGate(manual('u1', M ? 'Get Xsolla Player Uploader for Mac' : 'Get Xsolla Player Uploader for Windows',
-        M ? 'Save xsolla-upload.zip, unzip it and double-click Xsolla Upload.command. It needs Python 3 (macOS offers to install it on the first run). If macOS says it could not verify the file, that is expected: the app is not notarized by Apple. Open System Settings, Privacy & Security, scroll down and click Open Anyway. This adds Xsolla Upload.command to the exceptions, so it starts normally next time. If security software still blocks it, add the app to its allowed list. You can also use the Terminal command below. Have Claude Code? Pick the plugin or skills path at the top of this stage instead.'
-          : 'Save xsolla-upload.zip, unzip it and double-click Xsolla Upload.bat. It needs Python 3 from python.org (tick Add python.exe to PATH). If Windows SmartScreen appears, click More info, then Run anyway, or use the PowerShell command below. Have Claude Code? Pick the plugin or skills path at the top of this stage instead.', {
-        hasCmd: true,
-        cmdTitle: M ? 'Mac, optional: download, unlock and start in one command (Terminal)' : 'Windows, optional: download and start in one command (PowerShell)',
-        cmd: M ? 'cd ~/Downloads && curl -fsSLO ' + ZIP + ' && unzip -oq xsolla-upload.zip && xattr -dr com.apple.quarantine xsolla-upload && open "xsolla-upload/Xsolla Upload.command"'
-               : 'cd $env:USERPROFILE\\Downloads; Invoke-WebRequest ' + ZIP + ' -OutFile xsolla-upload.zip; Expand-Archive xsolla-upload.zip -DestinationPath . -Force; & ".\\xsolla-upload\\Xsolla Upload.bat"',
-        isDl: true, dlHref: ZIP, dlLabel: 'Download xsolla-upload.zip', dlMsg: this.state.dlMsg, download: function () { self.download(); } })),
-      auto('u2', 'Run the app and upload your game',
-        M ? 'The app asks for your game (drag the .app or its .zip into the window), the game name and your API key at a hidden prompt. Press Enter at each question you do not need. It checks the build, asks to confirm, then uploads to Draft.'
-          : 'The app asks for your game (drag the game folder or its .zip into the window), the game name and your API key at a hidden prompt. Keep the game path in Latin letters and shorter than 260 characters, for example C:\\Games\\MyGame. The app checks the build, asks to confirm, then uploads to Draft.'),
-      auto('u3', 'Paste the receipt', 'When the upload finishes the app prints a receipt, copies it to your clipboard and saves it on your Desktop. Paste it in the verification box below.')
-    ];
+    var P = this.state.path === 'skills' ? 'skills' : 'plugin';
+    var upload;
     var SKZ = 'https://raw.githubusercontent.com/dshustovv/game-jam-x-publisher-quest/main/xsolla-skills.zip';
-    var KEYNOTE = ' Keep it private: do not share it in screenshots or in your game code.';
-    if (P !== 'app') {
-      prepare[2] = manual('p3', 'Copy your API key (launcher ID)',
-        'In Player Account open Games, Set up next to your game, Builds, Game builds and copy the API key (launcher ID) with the plus icon.' + KEYNOTE + ' Claude finds Build Loader itself; if it cannot, it asks you to put BuildLoader.zip for your OS into Downloads.');
-    }
-    if (P === 'plugin') {
+    if (P !== 'skills') {
       upload = [
         manual('u1', 'Install the Claude Code plugin',
           'Open Claude Code and run the two commands below one at a time: paste the first, press Enter, wait until it finishes, then paste the second. The first adds the quest marketplace, the second installs the plugin. It brings the /xsolla-launcher-upload skill, its step-by-step version /xsolla-launcher-upload-guide and the uploader agent. Restart Claude Code if it asks you to.',
@@ -1077,9 +1008,9 @@ class Component extends DCLogic {
         manual('u2', 'Run /xsolla-launcher-upload',
           'Open Claude Code, run the command below and give Claude your game, its name and the API key when it asks. The build must be for ' + (M ? 'macOS' : 'Windows') + '.',
           { hasCmd: true, cmdTitle: 'Claude Code: run', cmd: '/xsolla-launcher-upload' }),
-        manual('u3', 'Read the summary', 'Claude ends with the result, the start file and a short list of clicks for Player Account. Keep it for stage 3. This path gives no receipt, so tick the box yourself when the summary says the upload is done.')
+        manual('u3', 'Read the summary', 'Claude ends with the result, the start file and a short list of clicks for Player Account. Keep it for stage 3. Tick the box yourself when the summary says the upload is done.')
       ];
-    } else if (P === 'skills') {
+    } else {
       upload = [
         dlGate(manual('u1', 'Get the skills for Claude Code',
           'Save xsolla-skills.zip, then unzip it into your Claude Code skills folder with the command below. It adds two skills: xsolla-launcher-upload runs the whole upload for you, xsolla-launcher-upload-guide walks you through it step by step. Restart Claude Code so it picks them up.',
@@ -1090,26 +1021,25 @@ class Component extends DCLogic {
         manual('u2', 'Run /xsolla-launcher-upload',
           'Open Claude Code, run the command below and give Claude your game, its name and the API key when it asks. The build must be for ' + (M ? 'macOS' : 'Windows') + '.',
           { hasCmd: true, cmdTitle: 'Claude Code: run', cmd: '/xsolla-launcher-upload' }),
-        manual('u3', 'Read the summary', 'Claude ends with the result, the start file and a short list of clicks for Player Account. Keep it for stage 3. This path gives no receipt, so tick the box yourself when the summary says the upload is done.')
+        manual('u3', 'Read the summary', 'Claude ends with the result, the start file and a short list of clicks for Player Account. Keep it for stage 3. Tick the box yourself when the summary says the upload is done.')
       ];
     }
     var verify = [
       manual('v1', 'Find the build in Draft', 'Game, Set up, Builds, Game builds. Your row shows Branch = draft. The table can lag a minute, so refresh the page.'),
       manual('v2', 'Set the start file',
-        M ? 'On the Executable files tab, in the macOS row, enter the start file exactly as the receipt shows it (the name of your .app).'
-          : 'On the Executable files tab, in the Windows row, enter the start file exactly as the receipt shows it (for example game.exe). Add redistributables such as VC++ on the Redistributables tab.'),
+        M ? 'On the Executable files tab, in the macOS row, enter the start file exactly as Claude’s summary shows it (the name of your .app).'
+          : 'On the Executable files tab, in the Windows row, enter the start file exactly as Claude’s summary shows it (for example game.exe). Add redistributables such as VC++ on the Redistributables tab.'),
       manual('v3', 'Stop before Publish', 'Draft builds are visible to testers only. Publish only after testing, because it reaches real players. ' + (M ? 'On macOS the next step builds one standalone installer.' : 'On Windows the next step builds two installers: web and standalone.'))
     ];
     var scenario = M ? [
-      { title: 'Build Loader', text: 'BuildLoader.zip for macOS, macOS 12.4 or newer. The tool is Mac/build_loader.' },
-      { title: 'Upload app', text: 'Xsolla Upload.command. macOS may ask you to add it to the exceptions: Privacy & Security, Open Anyway.' },
+      { title: 'Build Loader', text: 'Claude finds BuildLoader.zip for macOS (macOS 12.4 or newer). The tool is Mac/build_loader.' },
+      { title: P === 'plugin' ? 'Claude Code plugin' : 'Claude Code skills', text: 'Claude runs Build Loader on this computer, so the game must be built for macOS.' },
       { title: 'Installer', text: 'Only a standalone installer is generated for macOS.' }
     ] : [
-      { title: 'Build Loader', text: 'BuildLoader.zip for Windows, Windows 10 64-bit. The tool is Win\\build_loader.exe.' },
-      { title: 'Upload app', text: 'Xsolla Upload.bat. If SmartScreen appears: More info, Run anyway. Keep the game path in Latin letters, under 260 characters.' },
+      { title: 'Build Loader', text: 'Claude finds BuildLoader.zip for Windows (Windows 10 64-bit). The tool is Win\\build_loader.exe.' },
+      { title: P === 'plugin' ? 'Claude Code plugin' : 'Claude Code skills', text: 'Claude runs Build Loader on this computer, so the game must be built for Windows. Keep the game path in Latin letters, under 260 characters.' },
       { title: 'Installer', text: 'Two installers: a small web installer that needs internet and a standalone one that works offline.' }
     ];
-    if (P !== 'app') scenario[1] = { title: P === 'plugin' ? 'Claude Code plugin' : 'Claude Code skills', text: 'Claude runs Build Loader on this computer, so the game must be built for ' + (M ? 'macOS' : 'Windows') + '. No receipt on this path.' };
     var _all = register.concat(prepare, upload, verify);
     _all.forEach(function (it, i) {
       var failed = it.isAuto && it.pill === 'Check failed', manualMark = it.isAuto && it.pill === 'Marked manually';
@@ -1152,9 +1082,8 @@ class Component extends DCLogic {
         var list = [
           { name: 'First Steps', desc: 'Your Player Account is ready and your first project exists.', done: !!op.R, source: 'From chest: Player Account' },
           { name: 'Key Keeper', desc: 'The Build Loader is in your Downloads and your API key is saved.', done: !!op.A, source: 'From chest: Launcher Key' },
-          { name: 'Draft Dropper', desc: 'Your game reached the Draft stage through the upload app.', done: !!op.B, source: 'From chest: Draft Build' },
+          { name: 'Draft Dropper', desc: 'Your game reached the Draft stage through Claude Code.', done: !!op.B, source: 'From chest: Draft Build' },
           { name: 'Launch Ready', desc: 'The start file is set and the build waits for testers.', done: !!op.C, source: 'From chest: Installer-Ready' },
-          { name: 'Clean Run', desc: 'Every receipt check passed on its own, with no manual marks.', done: !!(v && v.all), source: 'Special: pass all receipt checks' },
           { name: 'Release Master', desc: 'You collected 800 XP or more on the Battle Path.', done: xp >= 800, source: 'Special: reach 800 XP' },
           { name: 'Completionist', desc: 'All twelve steps done and all four chests opened.', done: all12, source: 'Special: finish everything' }
         ];
@@ -1169,22 +1098,15 @@ class Component extends DCLogic {
       })();
     return {
       register: register, registerCount: cr, prepare: prepare, upload: upload, verify: verify, checks: checks,
-      demoText: dtext + (dtyping ? '\u258C' : ''), demoChecks: demoChecks, demoPill: demoOk ? 'Verified' : 'Printing...', demoPillBg: demoOk ? '#80EAFF' : '#ffc380',
+      demoText: dtext + (dtyping ? '\u258C' : ''), demoChecks: demoChecks, demoPill: demoOk ? 'Done' : 'Running...', demoPillBg: demoOk ? '#80EAFF' : '#ffc380',
       hasTicket: total === 12, ticketGame: (this.state.gameName || 'Your jam game'), ticketNo: tnum, ticketDate: tdate,
       macLabel: '#80EAFF', winLabel: '#80EAFF',
-      prepareCard: M ? 'Use a Mac with macOS 12.4 or newer, add the game in Player Account, get the macOS Build Loader and copy the game’s API key.' : 'Use a Windows 10 (64-bit) PC, add the game in Player Account, get the Windows Build Loader and copy the game’s API key.',
-      hasSkipAll: P === 'app' && !(v && v.all),
-      skipAllNote: 'Receipt will not turn green? Maybe you uploaded another way or the app could not read the key. You can close the three receipt steps by hand and move on.',
-      skipAllLabel: (['p3', 'u2', 'u3'].every(function (id) { return map[id]; }) && !(v && v.all)) ? 'Undo: reopen steps 1.3, 2.2 and 2.3' : 'Mark steps 1.3, 2.2 and 2.3 as done manually',
-      skipAll: function () { self.skipAll(); },
+      prepareCard: M ? 'Use a Mac with macOS 12.4 or newer, add the game in Player Account, and copy the game’s API key.' : 'Use a Windows 10 (64-bit) PC, add the game in Player Account, and copy the game’s API key.',
       paths: [
         { id: 'plugin', title: 'Claude Code plugin', tag: 'EASIEST', text: 'Install once from this repo, then run /xsolla-launcher-upload. Needs Claude Code.' },
-        { id: 'app', title: 'Xsolla Player Uploader (.command / .bat)', tag: 'RECEIPT', text: 'Double-click Xsolla Upload.command on Mac or .bat on Windows. No Claude Code needed.' },
         { id: 'skills', title: 'Claude Code skills', tag: 'MANUAL SETUP', text: 'Unzip two skills into ~/.claude/skills and run /xsolla-launcher-upload.' }
       ].map(function (x) { var on = P === x.id; return Object.assign(x, { on: on, bg: on ? 'rgba(128,234,255,.10)' : '#233134', border: on ? '#80EAFF' : '#33454a', tagBg: on ? '#80EAFF' : '#9fb0b3', pick: function () { self.setPath(x.id); } }); }),
-      uploadTitle: P === 'plugin' ? 'Upload with the plugin' : (P === 'skills' ? 'Upload with skills' : 'Upload with the app'),
-      showReceipt: P === 'app', noReceipt: P !== 'app',
-      noReceiptText: 'The receipt check works only with the app. On this path Claude reports the result in chat, and you close the steps by hand. Organizers can still confirm your build in Player Account.',
+      uploadTitle: P === 'plugin' ? 'Upload with the plugin' : 'Upload with skills',
       scenario: scenario, isMac: M, isWin: !M,
       macBg: M ? '#80EAFF' : 'transparent', macFg: M ? '#141d1f' : '#d3dcde', winBg: !M ? '#80EAFF' : 'transparent', winFg: !M ? '#141d1f' : '#d3dcde',
       setMac: function () { self.setOs('mac'); }, setWin: function () { self.setOs('win'); },
@@ -1217,7 +1139,6 @@ class Component extends DCLogic {
       slotBBorder: doneB ? '#80EAFF' : '#33454a', slotBClass: recentStages.B ? 'xq-glow' : '',
       slotCBorder: doneC ? '#80EAFF' : '#33454a', slotCClass: recentStages.C ? 'xq-glow' : '',
       gameName: this.state.gameName, receiptText: this.state.receipt,
-      receiptOk: !!(v && v.all), receiptSummary: v ? v.summary : '',
       hasToast: !!this.state.toast, toast: this.state.toast,
       hasBurst: !!burst, particles: this.particles(burst),
       soundLabel: this.state.sound ? 'Sound: on' : 'Sound: off', soundOn: this.state.sound,
@@ -1226,7 +1147,6 @@ class Component extends DCLogic {
         var val = e.target.value;
         self.setState({ gameName: val });
         self.persist(self.state.done, val, self.state.receipt, self.state.sound);
-        self.runVerify(self.state.receipt, val, false);
       },
       onReceipt: function (e) {
         var val = e.target.value;
