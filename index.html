@@ -198,7 +198,7 @@ html{scroll-behavior:smooth}
         <span class="xq-num" style="background:#ffc380;color:#141d1f">02</span>
         <div style="display:flex;flex-direction:column;gap:12px">
         <h3 style="margin:0;font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.015em">Prepare</h3>
-        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Use a Mac with macOS 12.4 or newer, add the game in Player Account and copy the game’s API key. Claude finds the Build Loader itself.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Use a Windows 10 (64-bit) PC, add the game in Player Account and copy the game’s API key. Claude finds the Build Loader itself. Keep the game path in Latin letters.</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Use a Mac with macOS 12.4 or newer, add the game in Player Account, download the Build Loader and copy the game’s API key.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Use a Windows 10 (64-bit) PC, add the game in Player Account, download the Build Loader and copy the game’s API key. Keep the game path in Latin letters.</span></div>
         </div>
       </div>
       <div class="xq-card xq-reveal" style="--s:#e84f30;background:#233134;padding:28px;min-height:340px;display:flex;flex-direction:column;justify-content:flex-start;gap:20px">
@@ -986,10 +986,11 @@ class Component extends DCLogic {
     ];
     var M = this.state.os !== 'win';
     var KEYNOTE = ' Keep it private: do not share it in screenshots or in your game code.';
+    var BLNOTE = ' Download Build Loader with the button below and keep the zip in Downloads without unzipping it (the archive holds the tools for both systems, Claude picks yours).';
     var prepare = [
       manual('p1', M ? 'Use a Mac with macOS 12.4 or newer' : 'Use a Windows 10 (64-bit) PC',
-        M ? 'Build Loader creates a macOS build on a Mac, so your game archive must contain a .app. Free disk space of about 1.5 times the game size is needed.'
-          : 'Build Loader creates a Windows build on a Windows PC, so your game folder must contain a .exe in its root. Free disk space of about 1.5 times the game size is needed.'),
+        M ? 'Build Loader creates a macOS build on a Mac, so your game archive must contain a .app. Free disk space of about 1.5 times the game size is needed.' + BLNOTE
+          : 'Build Loader creates a Windows build on a Windows PC, so your game folder must contain a .exe in its root. Free disk space of about 1.5 times the game size is needed.' + BLNOTE, { hasLink: true, link: 'https://cdn.xsolla.net/launcher/build/Partners/build_loader.zip', linkText: M ? 'Download Build Loader for macOS (zip from Xsolla CDN)' : 'Download Build Loader for Windows (zip from Xsolla CDN)' }),
       manual('p2', 'Add your game in Player Account', 'Open Player Account with the button below (it opens in a new window) and sign in. The direct link to your project exists only after registration is finished, so you find it from the menu: choose your project, then Tools, Distribution, Launcher. On the Launcher page open Edit launcher, Games, and add your game. If the game is already on the list, move on.', { hasLink: true, link: 'https://xsolla.com/for/web-games/account', linkText: 'Open Player Account' }),
       manual('p3', 'Copy your API key (launcher ID)',
         'In Player Account open Games, Set up next to your game, Builds, Game builds and copy the API key (launcher ID) with the plus icon.' + KEYNOTE + ' Claude finds Build Loader itself; if it cannot, it asks you to put BuildLoader.zip for your OS into Downloads.')
