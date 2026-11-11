@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>XCA x Game Jam</title>
-<meta name="description" content="Register in Player Account, upload your jam build to the Xsolla Player with Claude Code, using a plugin or two skills.">
+<meta name="description" content="Register in Player Account, upload your jam build to the Xsolla Player with Claude Code, using a plugin or a skill.">
 <link rel="stylesheet" href="ds/xsolla/colors_and_type.css">
 <style>
 body{margin:0;background:#141d1f}
@@ -141,7 +141,7 @@ html{scroll-behavior:smooth}
     <div style="flex:1 1 460px;min-width:0;display:flex;flex-direction:column;gap:24px">
       <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:none;color:#80EAFF">XCA x Game Jam</span>
       <h1 style="margin:0;font-family:'Pilat Wide',system-ui,sans-serif;font-weight:700;font-size:clamp(36px,5.4vw,68px);line-height:1.04;letter-spacing:-0.03em;color:#FFFFFF;text-wrap:balance">Get your jam build into the Xsolla Player</h1>
-      <p style="margin:0;font-size:19px;line-height:1.5;color:#d3dcde;max-width:520px">Twelve steps take your game from a zip archive to a Draft build that testers can install. Claude Code does the upload for you: install a plugin or two skills, run one command and tick the steps as you go.</p>
+      <p style="margin:0;font-size:19px;line-height:1.5;color:#d3dcde;max-width:520px">Twelve steps take your game from a zip archive to a Draft build that testers can install. Claude Code does the upload for you: install a plugin or a skill, run one command and tick the steps as you go.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
         <a class="xq-btn" href="#quest" style="background:#80EAFF;color:#141d1f;text-decoration:none;font-weight:600;font-size:16px;padding:16px 28px;border-radius:0">Start the Battle Path</a>
         <a class="xq-btn" href="#how" style="background:transparent;color:#FFFFFF;text-decoration:none;font-weight:600;font-size:16px;padding:14.5px 26px;border-radius:0;border:1.5px solid #546a6f">See how it works</a>
@@ -205,7 +205,7 @@ html{scroll-behavior:smooth}
         <span class="xq-num" style="background:#e84f30;color:#ffffff">03</span>
         <div style="display:flex;flex-direction:column;gap:12px">
         <h3 style="margin:0;font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.015em">Upload</h3>
-        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Install the plugin or skills, run /xsolla-launcher-upload and give Claude your .app, the name and the key. It checks the build, then sends it to Draft.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Install the plugin or skills, run /xsolla-launcher-upload and give Claude your game folder, the name and the key. It checks the build, then sends it to Draft.</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Install the plugin or the skill, run /xsolla-launcher-upload and give Claude your .app, the name and the key. It checks the build, then sends it to Draft.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Install the plugin or the skill, run /xsolla-launcher-upload and give Claude your game folder, the name and the key. It checks the build, then sends it to Draft.</span></div>
         </div>
       </div>
       <div class="xq-card xq-reveal" style="--s:#80EAFF;background:#233134;padding:28px;min-height:340px;display:flex;flex-direction:column;justify-content:flex-start;gap:20px">
@@ -997,11 +997,11 @@ class Component extends DCLogic {
     ];
     var P = this.state.path === 'skills' ? 'skills' : 'plugin';
     var upload;
-    var SKZ = 'https://raw.githubusercontent.com/dshustovv/game-jam-x-publisher-quest/main/xsolla-skills.zip';
+    var SKZ = 'https://raw.githubusercontent.com/dshustovv/game-jam-x-publisher-quest/main/xsolla-launcher-upload.zip';
     if (P !== 'skills') {
       upload = [
         manual('u1', 'Install the Claude Code plugin',
-          'Open Claude Code and run the two commands below one at a time: paste the first, press Enter, wait until it finishes, then paste the second. The first adds the quest marketplace, the second installs the plugin. It brings the /xsolla-launcher-upload skill, its step-by-step version /xsolla-launcher-upload-guide and the uploader agent. Restart Claude Code if it asks you to.',
+          'Open Claude Code and run the two commands below one at a time: paste the first, press Enter, wait until it finishes, then paste the second. The first adds the quest marketplace, the second installs the plugin. It brings the /xsolla-launcher-upload skill. Restart Claude Code if it asks you to.',
           { hasCmd: true, cmdTitle: 'Step 1 in Claude Code: add the marketplace',
             cmd: '/plugin marketplace add dshustovv/Game-Jam-x-Publisher-quest',
             cmdTitle2: 'Step 2, after step 1 finishes: install the plugin',
@@ -1013,12 +1013,12 @@ class Component extends DCLogic {
       ];
     } else {
       upload = [
-        dlGate(manual('u1', 'Get the skills for Claude Code',
-          'Save xsolla-skills.zip, then unzip it into your Claude Code skills folder with the command below. It adds two skills: xsolla-launcher-upload runs the whole upload for you, xsolla-launcher-upload-guide walks you through it step by step. Restart Claude Code so it picks them up.',
+        dlGate(manual('u1', 'Get the skill for Claude Code',
+          'Save xsolla-launcher-upload.zip, then unzip it into your Claude Code skills folder with the command below. It adds the xsolla-launcher-upload skill, which runs the whole upload for you. Restart Claude Code so it picks it up.',
           { hasCmd: true, cmdTitle: M ? 'Mac: unzip into ~/.claude/skills (Terminal)' : 'Windows: unzip into .claude\\skills (PowerShell)',
-            cmd: M ? 'mkdir -p ~/.claude/skills && cd ~/Downloads && unzip -oq xsolla-skills.zip -d ~/.claude/skills'
-                   : 'New-Item -ItemType Directory -Force "$env:USERPROFILE\\.claude\\skills" | Out-Null; Expand-Archive "$env:USERPROFILE\\Downloads\\xsolla-skills.zip" -DestinationPath "$env:USERPROFILE\\.claude\\skills" -Force',
-            isDl: true, dlHref: SKZ, dlLabel: 'Download xsolla-skills.zip', dlMsg: this.state.dlMsg, download: function () { self.download(); } })),
+            cmd: M ? 'mkdir -p ~/.claude/skills && cd ~/Downloads && unzip -oq xsolla-launcher-upload.zip -d ~/.claude/skills'
+                   : 'New-Item -ItemType Directory -Force "$env:USERPROFILE\\.claude\\skills" | Out-Null; Expand-Archive "$env:USERPROFILE\\Downloads\\xsolla-launcher-upload.zip" -DestinationPath "$env:USERPROFILE\\.claude\\skills" -Force',
+            isDl: true, dlHref: SKZ, dlLabel: 'Download xsolla-launcher-upload.zip', dlMsg: this.state.dlMsg, download: function () { self.download(); } })),
         manual('u2', 'Run /xsolla-launcher-upload',
           'Open Claude Code, run the command below and give Claude your game, its name and the API key when it asks. The build must be for ' + (M ? 'macOS' : 'Windows') + '.',
           { hasCmd: true, cmdTitle: 'Claude Code: run', cmd: '/xsolla-launcher-upload' }),
@@ -1105,7 +1105,7 @@ class Component extends DCLogic {
       prepareCard: M ? 'Use a Mac with macOS 12.4 or newer, add the game in Player Account, and copy the game’s API key.' : 'Use a Windows 10 (64-bit) PC, add the game in Player Account, and copy the game’s API key.',
       paths: [
         { id: 'plugin', title: 'Claude Code plugin', tag: 'EASIEST', text: 'Install once from this repo, then run /xsolla-launcher-upload. Needs Claude Code.' },
-        { id: 'skills', title: 'Claude Code skills', tag: 'MANUAL SETUP', text: 'Unzip two skills into ~/.claude/skills and run /xsolla-launcher-upload.' }
+        { id: 'skills', title: 'Claude Code skills', tag: 'MANUAL SETUP', text: 'Unzip the skill into ~/.claude/skills and run /xsolla-launcher-upload.' }
       ].map(function (x) { var on = P === x.id; return Object.assign(x, { on: on, bg: on ? 'rgba(128,234,255,.10)' : '#233134', border: on ? '#80EAFF' : '#33454a', tagBg: on ? '#80EAFF' : '#9fb0b3', pick: function () { self.setPath(x.id); } }); }),
       uploadTitle: P === 'plugin' ? 'Upload with the plugin' : 'Upload with skills',
       scenario: scenario, isMac: M, isWin: !M,

@@ -17,9 +17,8 @@ Quest for Game Jam participants: get a jam build into Xsolla Player (Draft) with
    ```
    /plugin install xsolla-launcher@xsolla-launcher-tools
    ```
-   For a step-by-step walkthrough use `/xsolla-launcher-upload-guide`.
    Then run `/xsolla-launcher-upload` and give Claude the game file or folder, the game name and the API key.
-2. **Claude Code skills**: `xsolla-skills.zip` holds `xsolla-launcher-upload` and `xsolla-launcher-upload-guide`.
+2. **Claude Code skill**: `xsolla-launcher-upload.zip` holds the `xsolla-launcher-upload` skill.
    Unzip into `~/.claude/skills` (Windows: `%USERPROFILE%\.claude\skills`) and run `/xsolla-launcher-upload`.
 
 Neither path prints a receipt: Claude reports the result in chat and participants tick the quest steps by hand.
@@ -31,7 +30,7 @@ The plugin lives in `plugins/xsolla-launcher/`, the marketplace file in `.claude
 - `extras/cover/` — обложка квеста.
 
 ## Adding a skill in the Claude app (Customize → Skills)
-The Claude app accepts one skill per zip (one top-level folder with one `SKILL.md`). Upload them one at a time:
+The Claude app accepts one skill per zip (one top-level folder with one `SKILL.md`). The quest uses only the first one; the guide is not part of the quest for now:
 - `xsolla-launcher-upload.zip` (runs the upload for you, needs Claude Code or another place where Claude can run commands on your computer)
 - `xsolla-launcher-upload-guide.zip` (step-by-step guide for the Claude app, Cowork and mobile, where Claude cannot run commands)
 
