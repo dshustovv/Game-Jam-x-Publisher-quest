@@ -42,7 +42,7 @@ if (-not $PrepareOnly -and -not $env:XSOLLA_BL_API_KEY) {
   Fail "XSOLLA_BL_API_KEY is empty (Player Account (sign in at xsolla.com/for/free-to-play-pc) > your game > Set up > Builds > Game builds > API key)"
 }
 $first = if ($Game) { $Game } else { $GameMac }
-if (-not $Name) { $Name = [IO.Path]::GetFileNameWithoutExtension($first) -replace '\.app$', '' }
+if (-not $Name) { $Name = [IO.Path]::GetFileNameWithoutExtension($first) -replace '\.(app|tar|exe|msi)$', '' }
 $Slug = ($Name -replace '[^A-Za-z0-9_-]', '_' -replace '_+', '_').Trim('_'); if (-not $Slug) { $Slug = "game" }
 if ($WorkDir -notmatch '^[A-Za-z]:\\[A-Za-z0-9_.\\-]*$') { Fail "WorkDir must be Latin letters/digits without spaces: $WorkDir" }
 $TS = Get-Date -Format "yyyyMMdd-HHmmss"
@@ -115,7 +115,7 @@ function Stage-Input([string]$src, [string]$dst) {   # returns the build root in
   if ($items.Count -eq 1 -and $items[0].PSIsContainer -and $items[0].Name -notmatch '\.app$') { return $items[0].FullName }
   return $dst
 }
-function List-Exes($d) { @(Get-ChildItem $d -Filter *.exe -File -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch '^(unins|vc_redist|dxsetup)|crashhandler|crashreport|setup' } | ForEach-Object Name) }
+function List-Exes($d) { @(Get-ChildItem $d -Filter *.exe -File -ErrorAction SilentlyContinue | Where-Object { $_.Name -notmatch '^(unins|vc_redist|dxsetup)|crashhandler|crashreport|^setup(\.exe$|[_-])|[_-]setup\.exe$' } | ForEach-Object Name) }
 function List-Apps($d) { @(Get-ChildItem $d -Filter *.app -Directory -ErrorAction SilentlyContinue | ForEach-Object Name) }
 function Detect-Platform($d) {
   $a = List-Apps $d; $w = List-Exes $d
@@ -200,7 +200,8 @@ if ($PrepareOnly) { Write-Output "RESULT: SUCCESS: prepared (no upload): $GameDi
 
 # ---------- 3. Build Loader: init + update ----------
 $Key = $env:XSOLLA_BL_API_KEY
-$Mask = $Key.Substring(0, [Math]::Min(4, $Key.Length)) + "..." + $Key.Substring([Math]::Max(0, $Key.Length - 3))
+if ($Key -match '[%"^&|<>\s]') { Write-Output "REASON: the API key contains a space or one of % `" ^ & | < > , which cmd.exe would misread. Copy the key again from Player Account (it should be letters, digits and dashes only)."; Write-Output "RESULT: FAILED: unusual characters in the API key"; exit 2 }
+$Mask = if ($Key.Length -ge 12) { $Key.Substring(0, 4) + "..." + $Key.Substring($Key.Length - 3) } else { "****" }
 
 function Run-BL([string]$logName, [string[]]$blArgs) {
   # cmd.exe redirection streams the log live (poll <name>.raw while it runs) and keeps the tool's own encoding

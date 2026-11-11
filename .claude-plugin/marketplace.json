@@ -7,7 +7,7 @@
       "name": "xsolla-launcher",
       "source": "./plugins/xsolla-launcher",
       "description": "Xsolla Player Uploader: agent and skills for uploading a game build to Xsolla Player",
-      "version": "1.2.1"
+      "version": "1.2.2"
     }
   ]
 }

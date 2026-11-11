@@ -59,7 +59,12 @@ case "$PLATFORM" in auto|mac|win|both) ;; *) fail "--platform must be auto, mac,
 for g in "$GAME_IN" "$GAME_MAC" "$GAME_WIN"; do [ -z "$g" ] || [ -e "$g" ] || fail "game not found: $g"; done
 [ -n "$GAME_IN$GAME_MAC" ] || fail "--game is required"
 FIRST="${GAME_IN:-$GAME_MAC}"
-[ -n "$NAME" ] || { NAME=$(basename "$FIRST"); NAME="${NAME%.zip}"; NAME="${NAME%.app}"; }
+if [ -z "$NAME" ]; then
+  NAME=$(basename "$FIRST"); LNAME=$(printf '%s' "$NAME" | tr 'A-Z' 'a-z')
+  for EXT in .tar.gz .tgz .tar .zip .7z .rar .dmg .app .exe .msi; do
+    case "$LNAME" in *"$EXT") NAME="${NAME:0:$((${#NAME}-${#EXT}))}"; break;; esac
+  done
+fi
 SLUG=$(printf '%s' "$NAME" | LC_ALL=C tr -c 'A-Za-z0-9_-' '_' | sed 's/__*/_/g; s/^_//; s/_$//')
 [ -n "$SLUG" ] || SLUG="game"
 [ "$STAGE" = "draft" ] || [ "$STAGE" = "none" ] || fail "--stage must be draft or none"
@@ -172,7 +177,7 @@ list_apps() { local e; for e in "$1"/*.app; do [ -d "$e" ] && basename "$e"; don
 list_exes() {
   local e b; for e in "$1"/*.exe "$1"/*.EXE; do
     [ -f "$e" ] || continue; b=$(basename "$e")
-    case "$(echo "$b" | tr 'A-Z' 'a-z')" in unins*|*crashhandler*|*crashreport*|vc_redist*|dxsetup*|*setup*) continue;; esac
+    case "$(echo "$b" | tr 'A-Z' 'a-z')" in unins*|*crashhandler*|*crashreport*|vc_redist*|dxsetup*|setup.exe|setup[_-]*|*[_-]setup.exe) continue;; esac
     echo "$b"; done
 }
 detect_platform() { # mac | win | both | unknown
@@ -277,13 +282,15 @@ if [ "$PREP_ONLY" -eq 1 ]; then echo "RESULT: SUCCESS: prepared (no upload): $GA
 
 # ---------- 3. Build Loader: init + update ----------
 KEY="$XSOLLA_BL_API_KEY"
-MASK="$(printf '%s' "$KEY" | cut -c1-4)…$(printf '%s' "$KEY" | rev | cut -c1-3 | rev)"
-mask() { sed "s/$KEY/$MASK/g"; }
+if [ "${#KEY}" -ge 12 ]; then MASK="$(printf '%s' "$KEY" | cut -c1-4)…$(printf '%s' "$KEY" | rev | cut -c1-3 | rev)"; else MASK="****"; fi
+# literal (not regex) replacement, line by line, so keys with / & . * are masked too
+mask() { K="$KEY" M="$MASK" awk 'BEGIN { k = ENVIRON["K"]; m = ENVIRON["M"] }
+  { s = $0; o = ""; if (k != "") while ((i = index(s, k)) > 0) { o = o substr(s, 1, i - 1) m; s = substr(s, i + length(k)) }
+    print o s; fflush() }'; }
 result_of() { grep -Eo 'Result: *[A-Za-z]+' "$1" | tail -1 | sed 's/Result: *//'; }
-run_bl() { # run_bl <logname> args... ; live output in <logname>.raw, masked copy in <logname>.log
+run_bl() { # run_bl <logname> args... ; output is masked on the fly into <logname>.log (no unmasked copy on disk)
   local name="$1"; shift
-  "$BL" "$@" > "$LOGDIR/$name.raw" 2>&1; local rc=$?
-  mask < "$LOGDIR/$name.raw" > "$LOGDIR/$name.log"; rm -f "$LOGDIR/$name.raw"
+  "$BL" "$@" 2>&1 | mask > "$LOGDIR/$name.log"; local rc=${PIPESTATUS[0]}
   return $rc
 }
 

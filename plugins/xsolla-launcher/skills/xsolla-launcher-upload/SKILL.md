@@ -175,3 +175,8 @@ The docs only describe stages for builds, not deletion. A Draft build is invisib
 the previous good build Published (pencil → Set as published) or leave the unwanted one in Draft. For deletion check
 the row's pencil/actions menu; otherwise Xsolla support / CSM (csm@xsolla.com). Deleting `~/xsolla_builds/<slug>`
 locally makes the next upload a full one.
+
+## API key handling
+- The scripts mask the key in every log they write (on macOS the output is masked while it streams, so no unmasked copy is left on disk). On Windows the log is masked when the upload ends.
+- Build Loader only accepts the key as the `--api-key` argument, so another program on the same computer can see it in the process list while the upload runs. Treat the computer as trusted and rotate the key in Player Account if you shared the machine.
+- On Windows the key must not contain a space or any of `% " ^ & | < >`. The script stops with a clear message if it does.
