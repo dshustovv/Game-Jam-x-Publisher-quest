@@ -8,19 +8,10 @@ Quest for Game Jam participants: get a jam build into Xsolla Player (Draft) with
 
 `index.html` is the quest landing (Stage 0 registration, then upload with Claude Code). Open it locally or serve it with GitHub Pages: https://dshustovv.github.io/Game-Jam-x-Publisher-quest/
 
-## Two ways to upload
+## How participants upload
+Download `xsolla-launcher-upload.zip`, drag the file into the Claude Code input line (do not unzip it) and follow Claude's instructions.
 
-1. **Claude Code plugin** (needs Claude Code). In Claude Code run these two commands one at a time (wait for the first to finish):
-   ```
-   /plugin marketplace add dshustovv/Game-Jam-x-Publisher-quest
-   ```
-   ```
-   /plugin install xsolla-launcher@xsolla-launcher-tools
-   ```
-   Then run `/xsolla-launcher-upload` and give Claude the game file or folder, the game name and the API key.
-2. **Claude Code skill**: download `xsolla-launcher-upload.zip`, drag the file into the Claude Code input line (do not unzip it) and follow Claude's instructions.
-
-Neither path prints a receipt: Claude reports the result in chat and participants tick the quest steps by hand.
+The skill does not print a receipt: Claude reports the result in chat and participants tick the quest steps by hand.
 
 The plugin lives in `plugins/xsolla-launcher/`, the marketplace file in `.claude-plugin/marketplace.json`.
 
