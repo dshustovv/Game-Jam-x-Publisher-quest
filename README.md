@@ -29,3 +29,10 @@ The plugin lives in `plugins/xsolla-launcher/`, the marketplace file in `.claude
 ## extras/
 - `extras/xsolla-player-prototype/` — прототип вкладок Game Jam и Jam rewards для Xsolla Player (GitHub Pages: `/extras/xsolla-player-prototype/`).
 - `extras/cover/` — обложка квеста.
+
+## Adding a skill in the Claude app (Customize → Skills)
+The Claude app accepts one skill per zip (one top-level folder with one `SKILL.md`). Upload them one at a time:
+- `xsolla-launcher-upload.zip` (runs the upload for you, needs Claude Code or another place where Claude can run commands on your computer)
+- `xsolla-launcher-upload-guide.zip` (step-by-step guide for the Claude app, Cowork and mobile, where Claude cannot run commands)
+
+`xsolla-skills.zip` holds both skills together and is only for unzipping into `~/.claude/skills` for Claude Code.
