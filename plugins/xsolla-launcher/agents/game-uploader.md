@@ -1,6 +1,6 @@
 ---
 name: game-uploader
-description: Uploads a game build to Xsolla Player on the user's own Mac/PC with Build Loader — any input format (.zip .7z .rar .tar.gz .dmg, folder, .app, portable .exe or a Windows installer), target platform macOS / Windows / both, up to a chosen stop point (check, upload, ready = one step before launcher generation, launcher). Use proactively when the user wants to upload, patch or update a game in Xsolla Player / Player Account, or hands over a game archive with a launcher API key.
+description: Uploads a game build to Xsolla Player on the user's own Mac/PC with Build Loader — any input format (.zip .7z .rar .tar.gz .dmg, folder, .app, portable .exe or a Windows installer), target platform macOS / Windows / both, up to a chosen stop point (check, upload, ready = one step before launcher generation, launcher). Use proactively when the user wants to upload, patch or update a game in Xsolla Player / Free to Play account, or hands over a game archive with a launcher API key.
 tools: Bash, Read, Glob, Grep, Skill
 skills:
   - xsolla-launcher-upload
@@ -60,7 +60,7 @@ Pending: <the other OS's archive and where to upload it — only if two builds w
 Start files: macOS <name.app|—>, Windows <name.exe|—>
 Build: "<descr>" in Draft (<size> MB, <seconds> s)          # if uploaded
 Logs: <log_dir>
-Next in Player Account: <numbered checklist up to the stop point — for `ready` end with
+Next in Free to Play account: <numbered checklist up to the stop point — for `ready` end with
 "next step: Generate installer (currently unstable — do it when you decide)">
 Problem / needed: <only if not SUCCESS: the REASON and the one action that fixes it>
 ```

@@ -39,7 +39,7 @@ if ($Platform -eq "both" -and -not ($GameMac -and $GameWin)) { Fail "-Platform b
 foreach ($g in @($Game, $GameMac, $GameWin)) { if ($g -and -not (Test-Path -LiteralPath $g)) { Fail "game not found: $g" } }
 if (-not ($Game -or $GameMac)) { Fail "-Game is required" }
 if (-not $PrepareOnly -and -not $env:XSOLLA_BL_API_KEY) {
-  Fail "XSOLLA_BL_API_KEY is empty (Player Account (sign in at xsolla.com/for/free-to-play-pc) > your game > Set up > Builds > Game builds > API key)"
+  Fail "XSOLLA_BL_API_KEY is empty (Free to Play account (sign in at xsolla.com/for/free-to-play-pc) > your game > Set up > Builds > Game builds > API key)"
 }
 $first = if ($Game) { $Game } else { $GameMac }
 if (-not $Name) { $Name = [IO.Path]::GetFileNameWithoutExtension($first) -replace '\.(app|tar|exe|msi)$', '' }
@@ -131,7 +131,7 @@ if (-not $PrepareOnly) {
          Where-Object { $_.Name -match 'build.?loader' -and $_.Name -notmatch 'mac' } | Select-Object -First 1
     if ($z) { $Loader = $z.FullName }
   }
-  if (-not $Loader) { Fail "Build Loader not found. Download BuildLoader.zip (Windows) in Player Account (sign in at xsolla.com/for/free-to-play-pc) > your game > Set up > Builds > Game builds, save it to Downloads and rerun" }
+  if (-not $Loader) { Fail "Build Loader not found. Download BuildLoader.zip (Windows) in Free to Play account (sign in at xsolla.com/for/free-to-play-pc) > your game > Set up > Builds > Game builds, save it to Downloads and rerun" }
   if (Test-Path -LiteralPath $Loader -PathType Leaf) {
     Remove-Item -Recurse -Force $ToolDir -ErrorAction SilentlyContinue
     Expand-Archive -LiteralPath $Loader -DestinationPath $ToolDir -Force
@@ -200,7 +200,7 @@ if ($PrepareOnly) { Write-Output "RESULT: SUCCESS: prepared (no upload): $GameDi
 
 # ---------- 3. Build Loader: init + update ----------
 $Key = $env:XSOLLA_BL_API_KEY
-if ($Key -match '[%"^&|<>\s]') { Write-Output "REASON: the API key contains a space or one of % `" ^ & | < > , which cmd.exe would misread. Copy the key again from Player Account (it should be letters, digits and dashes only)."; Write-Output "RESULT: FAILED: unusual characters in the API key"; exit 2 }
+if ($Key -match '[%"^&|<>\s]') { Write-Output "REASON: the API key contains a space or one of % `" ^ & | < > , which cmd.exe would misread. Copy the key again from Free to Play account (it should be letters, digits and dashes only)."; Write-Output "RESULT: FAILED: unusual characters in the API key"; exit 2 }
 $Mask = if ($Key.Length -ge 12) { $Key.Substring(0, 4) + "..." + $Key.Substring($Key.Length - 3) } else { "****" }
 
 function Run-BL([string]$logName, [string[]]$blArgs) {

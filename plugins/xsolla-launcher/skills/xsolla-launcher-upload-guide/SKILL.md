@@ -1,6 +1,6 @@
 ---
 name: xsolla-launcher-upload-guide
-description: Step-by-step guide that walks a person through uploading their game to Xsolla Player when Claude cannot run commands on their computer (claude.ai, Cowork, mobile) — one step per message, ready-to-run commands for their Mac (zsh) or Windows (PowerShell), a downloadable upload script, reading their output and fixing errors, then Player Account clicks up to a chosen stop point (by default one step before launcher generation; launcher download and testing only on request). Use whenever someone wants to upload, update or patch a game build in Xsolla Player / Player Account, mentions Build Loader, BuildLoader.zip, a launcher API key, Get installer, or "загрузить игру в лаунчер Xsolla", and you cannot run commands on their own Mac/PC (a cloud/Linux sandbox does not count). If your shell is their own computer (Claude Code), use the xsolla-launcher-upload skill instead.
+description: Step-by-step guide that walks a person through uploading their game to Xsolla Player when Claude cannot run commands on their computer (claude.ai, Cowork, mobile) — one step per message, ready-to-run commands for their Mac (zsh) or Windows (PowerShell), a downloadable upload script, reading their output and fixing errors, then Free to Play account clicks up to a chosen stop point (by default one step before launcher generation; launcher download and testing only on request). Use whenever someone wants to upload, update or patch a game build in Xsolla Player / Free to Play account, mentions Build Loader, BuildLoader.zip, a launcher API key, Get installer, or "загрузить игру в лаунчер Xsolla", and you cannot run commands on their own Mac/PC (a cloud/Linux sandbox does not count). If your shell is their own computer (Claude Code), use the xsolla-launcher-upload skill instead.
 ---
 
 # Xsolla Player Uploader — step-by-step mode
@@ -56,7 +56,7 @@ in their words ("только проверь", "только загрузи", "�
 3. Game name (just a label for the build description and local folder — it does not have to match PA; if they gave
    archive names, derive it and say so instead of asking) and where the archive/folder is.
 
-## Step 2 — Player Account (they click)
+## Step 2 — Free to Play account (they click)
 
 0. Sign in at https://xsolla.com/for/free-to-play-pc/account/login (the account is at xsolla.com/for/free-to-play-pc).
 1. PA → project → **Launcher** → **Edit launcher** → **Games**: the game exists? If not — add it.
@@ -138,7 +138,7 @@ and `… --update --game-path C:\xsolla_builds\game --descr "<Game name> v1" --s
 Success looks like `Finish … Result: success`. Apple Silicon "Bad CPU type" → Rosetta:
 `softwareupdate --install-rosetta --agree-to-license`.
 
-## Step 5 — Player Account after the upload (one short checklist)
+## Step 5 — Free to Play account after the upload (one short checklist)
 
 1. Builds › Game builds: a row with their description, **Branch** = draft (also under *Branches*); the table can lag
    a minute — refresh.

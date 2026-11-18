@@ -1,4 +1,4 @@
-# Download the generated launcher installer(s) from the links in Player Account (Launcher build > Get installer),
+# Download the generated launcher installer(s) from the links in Free to Play account (Launcher build > Get installer),
 # check the Authenticode signature, optionally start the installer. Windows, PowerShell 5.1+.
 #
 # Usage: powershell -NoProfile -ExecutionPolicy Bypass -File get_launcher.ps1 -Url <link>[,<link>] [-Out <dir>] [-Open]

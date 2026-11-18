@@ -1,5 +1,5 @@
 #!/bin/bash
-# Download the generated launcher installer(s) from the links in Player Account (Launcher build > Get installer),
+# Download the generated launcher installer(s) from the links in Free to Play account (Launcher build > Get installer),
 # check the signature, optionally start the installer. macOS host; bash 3.2 compatible.
 #
 # Usage: bash get_launcher.sh --url <link> [--url <link> ...] [--out <dir>] [--open]
@@ -18,7 +18,7 @@ $2"; shift 2;;
 done
 fail() { echo "RESULT: FAILED: $*"; exit 1; }
 summary() { echo "SUMMARY $1=$2"; }
-[ -n "$URLS" ] || fail "--url is required (Player Account (sign in at xsolla.com/for/free-to-play-pc) > Launcher > Edit launcher > Settings > Launcher build > Get installer)"
+[ -n "$URLS" ] || fail "--url is required (Free to Play account (sign in at xsolla.com/for/free-to-play-pc) > Launcher > Edit launcher > Settings > Launcher build > Get installer)"
 TS=$(date +%Y%m%d-%H%M%S); DIR="$OUT/$TS"; mkdir -p "$DIR" || fail "cannot create $DIR"
 summary out_dir "$DIR"
 OK=0; BAD=0; LAST=""

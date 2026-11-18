@@ -53,7 +53,7 @@ in their words ("только проверь", "только загрузи", "�
 3. Game name (just a label for the build description and local folder — it does not have to match PA; if they gave
    archive names, derive it and say so instead of asking) and where the archive/folder is.
 
-## Step 2 — Player Account (they click)
+## Step 2 — Free to Play account (they click)
 
 1. PA → project → **Launcher** → **Edit launcher** → **Games**: the game exists? If not — add it.
 2. Game → **Set up** → **Builds › Game builds**:
@@ -134,7 +134,7 @@ and `… --update --game-path C:\xsolla_builds\game --descr "<Game name> v1" --s
 Success looks like `Finish … Result: success`. Apple Silicon "Bad CPU type" → Rosetta:
 `softwareupdate --install-rosetta --agree-to-license`.
 
-## Step 5 — Player Account after the upload (one short checklist)
+## Step 5 — Free to Play account after the upload (one short checklist)
 
 1. Builds › Game builds: a row with their description, **Branch** = draft (also under *Branches*); the table can lag
    a minute — refresh.

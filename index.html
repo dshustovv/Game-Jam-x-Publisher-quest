@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>XCA x Game Jam</title>
-<meta name="description" content="Register in Publisher Account, upload your jam build to the Xsolla Player with Claude Code, with one Claude Code skill.">
+<meta name="description" content="Register in Free to Play account, upload your jam build to the Xsolla Player with Claude Code, with one Claude Code skill.">
 <link rel="stylesheet" href="ds/xsolla/colors_and_type.css">
 <style>
 body{margin:0;background:#141d1f}
@@ -191,14 +191,14 @@ html{scroll-behavior:smooth}
         <span class="xq-num" style="background:#95ff80;color:#141d1f">01</span>
         <div style="display:flex;flex-direction:column;gap:12px">
         <h3 style="margin:0;font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.015em">Register</h3>
-        <p style="margin:0;color:#d3dcde">Sign up in Publisher Account and create your first project. It takes a few minutes and a confirmation code from your email.</p>
+        <p style="margin:0;color:#d3dcde">Sign up in Free to Play account and create your first project. It takes a few minutes and a confirmation code from your email.</p>
         </div>
       </div>
       <div class="xq-card xq-reveal" style="--s:#ffc380;background:#233134;padding:28px;min-height:340px;display:flex;flex-direction:column;justify-content:flex-start;gap:20px">
         <span class="xq-num" style="background:#ffc380;color:#141d1f">02</span>
         <div style="display:flex;flex-direction:column;gap:12px">
         <h3 style="margin:0;font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.015em">Prepare</h3>
-        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Use a Mac with macOS 12.4 or newer, add the game in Publisher Account, download the Build Loader and copy the game’s API key.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Use a Windows 10 (64-bit) PC, add the game in Publisher Account, download the Build Loader and copy the game’s API key. Keep the game path in Latin letters.</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Use a Mac with macOS 12.4 or newer, add the game in Free to Play account, download the Build Loader and copy the game’s API key.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Use a Windows 10 (64-bit) PC, add the game in Free to Play account, download the Build Loader and copy the game’s API key. Keep the game path in Latin letters.</span></div>
         </div>
       </div>
       <div class="xq-card xq-reveal" style="--s:#e84f30;background:#233134;padding:28px;min-height:340px;display:flex;flex-direction:column;justify-content:flex-start;gap:20px">
@@ -212,7 +212,7 @@ html{scroll-behavior:smooth}
         <span class="xq-num" style="background:#80EAFF;color:#141d1f">04</span>
         <div style="display:flex;flex-direction:column;gap:12px">
         <h3 style="margin:0;font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.015em">Verify</h3>
-        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Read Claude’s summary, find the build row in Publisher Account and set the .app start file. One standalone installer follows.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Read Claude’s summary, find the build row in Publisher Account and set the .exe start file. Web and standalone installers follow.</span></div>
+        <div style="display:flex;flex-direction:column;gap:8px;color:#d3dcde"><span style="display:block"><b style="color:{{ macLabel }}">macOS:</b> Read Claude’s summary, find the build row in Free to Play account and set the .app start file. One standalone installer follows.</span><span style="display:block"><b style="color:{{ winLabel }}">Windows:</b> Read Claude’s summary, find the build row in Free to Play account and set the .exe start file. Web and standalone installers follow.</span></div>
         </div>
       </div>
     </div>
@@ -296,7 +296,7 @@ html{scroll-behavior:smooth}
 
           <!-- Stage 0 -->
           <div style="display:flex;flex-direction:column;gap:12px">
-            <div class="xq-band xq-reveal" style="--a:#ffc380;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-left:6px solid #ffc380;padding:14px 20px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 14px,transparent 14px 28px),#233134"><span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:700;font-size:22px;color:#ffc380">00</span><span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em">Register in Publisher Account</span><span style="margin-left:auto;font-size:12px;font-weight:600;background:#233134;color:#d3dcde;padding:4px 10px">{{ registerCount }} of 3</span></div>
+            <div class="xq-band xq-reveal" style="--a:#ffc380;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-left:6px solid #ffc380;padding:14px 20px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 14px,transparent 14px 28px),#233134"><span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:700;font-size:22px;color:#ffc380">00</span><span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em">Register in Free to Play account</span><span style="margin-left:auto;font-size:12px;font-weight:600;background:#233134;color:#d3dcde;padding:4px 10px">{{ registerCount }} of 3</span></div>
             <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2px;align-items:stretch">
             <sc-for list="{{ register }}" as="it" hint-placeholder-count="3">
   <div class="xq-cell"><div class="xq-card xq-reveal {{ it.glow }}" style="--s:{{ it.stripe }};background:#233134;display:flex;flex-direction:column;min-width:0">
@@ -464,7 +464,7 @@ html{scroll-behavior:smooth}
 
             <div style="background:#233134;border:1px solid #33454a;border-radius:0;padding:20px;display:flex;flex-direction:column;gap:16px">
               <span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:16px">Check the result in chat</span>
-              <span style="font-size:14px;color:#d3dcde">Claude reports the result in chat. Tick the steps by hand when it says the upload is done. Organizers can still confirm your build in Publisher Account, Builds, Game builds.</span>
+              <span style="font-size:14px;color:#d3dcde">Claude reports the result in chat. Tick the steps by hand when it says the upload is done. Organizers can still confirm your build in Free to Play account, Builds, Game builds.</span>
               <label style="display:flex;flex-direction:column;gap:6px">
                 <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9fb0b3">Your game name (shown on your ticket)</span>
                 <input id="game-name" type="text" value="{{ gameName }}" onChange="{{ onGame }}" placeholder="My Jam Game" style="box-sizing:border-box;width:100%;background:#141d1f;border:1px solid #546a6f;border-radius:0;padding:12px 14px;color:#FFFFFF;font:400 15px 'Aktiv Grotesk',system-ui,sans-serif">
@@ -474,7 +474,7 @@ html{scroll-behavior:smooth}
 
           <!-- Stage 3 -->
           <div style="display:flex;flex-direction:column;gap:12px">
-            <div class="xq-band xq-reveal" style="--a:#e84f30;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-left:6px solid #e84f30;padding:14px 20px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 14px,transparent 14px 28px),#233134"><span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:700;font-size:22px;color:#e84f30">03</span><span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em">Verify in Publisher Account</span><span style="margin-left:auto;font-size:12px;font-weight:600;background:#233134;color:#d3dcde;padding:4px 10px">{{ verifyCount }} of 3</span></div>
+            <div class="xq-band xq-reveal" style="--a:#e84f30;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-left:6px solid #e84f30;padding:14px 20px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 14px,transparent 14px 28px),#233134"><span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:700;font-size:22px;color:#e84f30">03</span><span style="font-family:'Pilat Wide',system-ui,sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em">Verify in Free to Play account</span><span style="margin-left:auto;font-size:12px;font-weight:600;background:#233134;color:#d3dcde;padding:4px 10px">{{ verifyCount }} of 3</span></div>
             <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2px;align-items:stretch">
             <sc-for list="{{ verify }}" as="it" hint-placeholder-count="3">
   <div class="xq-cell"><div class="xq-card xq-reveal {{ it.glow }}" style="--s:{{ it.stripe }};background:#233134;display:flex;flex-direction:column;min-width:0">
@@ -586,7 +586,7 @@ html{scroll-behavior:smooth}
       </div>
       <div style="background:#233134;border:1px solid #33454a;border-radius:0;padding:28px;display:flex;flex-direction:column;gap:10px">
         <h3 style="margin:0;font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.015em">The key is a secret</h3>
-        <p style="margin:0;color:#d3dcde">Type it only at the hidden prompt in your terminal. If it lands in a chat, regenerate it in Publisher Account after testing.</p>
+        <p style="margin:0;color:#d3dcde">Type it only at the hidden prompt in your terminal. If it lands in a chat, regenerate it in Free to Play account after testing.</p>
       </div>
       <div style="background:#233134;border:1px solid #33454a;border-radius:0;padding:28px;display:flex;flex-direction:column;gap:10px">
         <h3 style="margin:0;font-family:'Pilat Wide',system-ui,sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.015em">Next versions are patches</h3>
@@ -701,14 +701,14 @@ var DL_B64 = '';
 var XQ_SALT = 'xsolla-launch-quest-v1';
 var XQ_ITEMS = { r1: 50, r2: 50, r3: 100, p1: 100, p2: 100, p3: 50, u1: 50, u2: 100, u3: 250, v1: 100, v2: 100, v3: 50 };
 var XQ_STAGES = [
-  { k: 'R', ids: ['r1', 'r2', 'r3'], name: 'Publisher Account', ach: 'First Steps', cls: 'xq-ch0' },
+  { k: 'R', ids: ['r1', 'r2', 'r3'], name: 'Free to Play account', ach: 'First Steps', cls: 'xq-ch0' },
   { k: 'A', ids: ['p1', 'p2', 'p3'], name: 'Launcher Key', ach: 'Key Keeper', cls: 'xq-ch1' },
   { k: 'B', ids: ['u1', 'u2', 'u3'], name: 'Draft Build', ach: 'Draft Dropper', cls: 'xq-ch2' },
   { k: 'C', ids: ['v1', 'v2', 'v3'], name: 'Installer-Ready', ach: 'Draft Ready', cls: 'xq-ch3' }
 ];
 var XQ_TOTAL = 1100;
 function guessOs() { try { return /win/i.test((navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || navigator.userAgent || '') ? 'win' : 'mac'; } catch (e) { return 'mac'; } }
-var DEMO_LINES = ['> /xsolla-launcher-upload', 'Build Loader found in Downloads', 'API key accepted', 'Game: My Jam Game (game.zip)', 'Platform: __P__', 'Checking the build...', 'Uploading to Draft...', 'Upload finished', 'Build is in the Draft list', 'Next: set the start file in Publisher Account'];
+var DEMO_LINES = ['> /xsolla-launcher-upload', 'Build Loader found in Downloads', 'API key accepted', 'Game: My Jam Game (game.zip)', 'Platform: __P__', 'Checking the build...', 'Uploading to Draft...', 'Upload finished', 'Build is in the Draft list', 'Next: set the start file in Free to Play account'];
 var DEMO_CHECKS = [['Build Loader found', 1], ['API key accepted', 2], ['Game and name read', 3], ['Platform matches your scenario', 4], ['Build checked', 5], ['Game uploaded to Draft', 7], ['Build listed in Draft', 8]];
 var XQ_RANKS = [[0, 'Jam Rookie'], [200, 'Scout'], [450, 'Build Crafter'], [800, 'Release Master'], [1100, 'Launcher Legend']];
 class Component extends DCLogic {
@@ -919,7 +919,7 @@ class Component extends DCLogic {
     var mb = (bytes / 1048576).toFixed(1);
     var checks = [
       { label: 'Build Loader came from Xsolla', state: c1 ? 'ok' : 'fail',
-        detail: c1 ? 'Build Loader ' + f.builder_version + ', signature valid (' + signer + ').' : 'Not found, not signed by Xsolla or version unreadable. Download BuildLoader.zip for your OS from Publisher Account, Builds, Game builds.' },
+        detail: c1 ? 'Build Loader ' + f.builder_version + ', signature valid (' + signer + ').' : 'Not found, not signed by Xsolla or version unreadable. Download BuildLoader.zip for your OS from Free to Play account, Builds, Game builds.' },
       { label: 'Real API key accepted', state: c2 ? 'ok' : 'fail',
         detail: c2 ? 'Xsolla accepted the key ' + f.key_mask + ' (' + keyLen + ' characters).' : 'Build Loader did not accept the key. Copy the API key of this exact game again.' },
       { label: 'Game name matches', state: c3 ? 'ok' : 'fail',
@@ -976,20 +976,20 @@ class Component extends DCLogic {
         pill: d ? 'Downloaded' : 'Click Download', pillColor: d ? '#80EAFF' : '#9fb0b3', canSkip: false, skipLabel: '', skip: function () {} });
     }
     var register = [
-      manual('r1', 'Sign up in Publisher Account', 'Open xsolla.com/for/free-to-play-pc/account/login and sign up to create your account. The password needs at least 8 characters with a digit, a capital and a lowercase letter. Every sign-in sends a confirmation code (two-factor authentication).', { hasLink: true, link: 'https://xsolla.com/for/free-to-play-pc/account/login', linkText: 'Open sign-up and sign-in' }),
+      manual('r1', 'Sign up in Free to Play account', 'Open xsolla.com/for/free-to-play-pc/account/login and sign up to create your account. The password needs at least 8 characters with a digit, a capital and a lowercase letter. Every sign-in sends a confirmation code (two-factor authentication).', { hasLink: true, link: 'https://xsolla.com/for/free-to-play-pc/account/login', linkText: 'Open sign-up and sign-in' }),
       manual('r2', 'Fill in your account details', 'Enter your first and last name, your role in the company, the company name (your full name if you sign up as an individual) and your country or region. A link to your game is optional. Click Next step.'),
       manual('r3', 'Create your first project', 'Choose the type Game, enter the project name in English, pick release platforms, monetization, development stage, and genre and engine. Click Finish. Your project appears in the side menu and its project ID sits next to the name.')
     ];
     var M = this.state.os !== 'win';
-    var KEYNOTE = ' Keep it private: do not share it in screenshots or in your game code. Upload only from a computer you trust: while the upload runs, other programs on it can see the key. If the computer is shared, replace the key in Publisher Account afterwards. On Windows the key must not contain a space or any of % " ^ & | < >.';
+    var KEYNOTE = ' Keep it private: do not share it in screenshots or in your game code. Upload only from a computer you trust: while the upload runs, other programs on it can see the key. If the computer is shared, replace the key in Free to Play account afterwards. On Windows the key must not contain a space or any of % " ^ & | < >.';
     var BLNOTE = ' Download Build Loader with the button below and keep the zip in Downloads without unzipping it (the archive holds the tools for both systems, Claude picks yours).';
     var prepare = [
       manual('p1', M ? 'Use a Mac with macOS 12.4 or newer' : 'Use a Windows 10 (64-bit) PC',
         M ? 'Build Loader creates a macOS build on a Mac, so your game archive must contain a .app. Free disk space of about 1.5 times the game size is needed.' + BLNOTE
           : 'Build Loader creates a Windows build on a Windows PC, so your game folder must contain a .exe in its root. Free disk space of about 1.5 times the game size is needed.' + BLNOTE, { hasLink: true, link: 'https://cdn.xsolla.net/launcher/build/Partners/build_loader.zip', linkText: M ? 'Download Build Loader for macOS (zip from Xsolla CDN)' : 'Download Build Loader for Windows (zip from Xsolla CDN)' }),
-      manual('p2', 'Add your game in Publisher Account', 'Open the account with the button below (it opens in a new window) and sign in. The direct link to your project exists only after registration is finished, so you find it from the menu: choose your project, then Tools, Distribution, Launcher. On the Launcher page open Edit launcher, Games, and add your game. If the game is already on the list, move on.', { hasLink: true, link: 'https://xsolla.com/for/free-to-play-pc/account', linkText: 'Open Account' }),
+      manual('p2', 'Add your game in Free to Play account', 'Open the account with the button below (it opens in a new window) and sign in. The direct link to your project exists only after registration is finished, so you find it from the menu: choose your project, then Tools, Distribution, Launcher. On the Launcher page open Edit launcher, Games, and add your game. If the game is already on the list, move on.', { hasLink: true, link: 'https://xsolla.com/for/free-to-play-pc/account', linkText: 'Open Account' }),
       manual('p3', 'Copy your API key (launcher ID)',
-        'In Publisher Account open Games, Set up next to your game, Builds, Game builds and copy the API key (launcher ID) with the plus icon.' + KEYNOTE + ' Claude finds Build Loader itself; if it cannot, it asks you to put BuildLoader.zip for your OS into Downloads.')
+        'In Free to Play account open Games, Set up next to your game, Builds, Game builds and copy the API key (launcher ID) with the plus icon.' + KEYNOTE + ' Claude finds Build Loader itself; if it cannot, it asks you to put BuildLoader.zip for your OS into Downloads.')
     ];
     var P = 'skills';
     var upload;
@@ -1059,7 +1059,7 @@ class Component extends DCLogic {
     var achList = (function () {
         var op = self.state.opened, all12 = total === 12 && XQ_STAGES.every(function (x) { return op[x.k]; });
         var list = [
-          { name: 'First Steps', desc: 'Your Publisher Account is ready and your first project exists.', done: !!op.R, source: 'From chest: Publisher Account' },
+          { name: 'First Steps', desc: 'Your Free to Play account is ready and your first project exists.', done: !!op.R, source: 'From chest: Free to Play account' },
           { name: 'Key Keeper', desc: 'The Build Loader is in your Downloads and your API key is saved.', done: !!op.A, source: 'From chest: Launcher Key' },
           { name: 'Draft Dropper', desc: 'Your game reached the Draft stage through Claude Code.', done: !!op.B, source: 'From chest: Draft Build' },
           { name: 'Draft Ready', desc: 'The start file is set and the build waits for testers.', done: !!op.C, source: 'From chest: Installer-Ready' },
@@ -1080,14 +1080,14 @@ class Component extends DCLogic {
       demoText: dtext + (dtyping ? '\u258C' : ''), demoChecks: demoChecks, demoPill: demoOk ? 'Done' : 'Running...', demoPillBg: demoOk ? '#80EAFF' : '#ffc380',
       hasTicket: total === 12, ticketGame: (this.state.gameName || 'Your jam game'), ticketNo: tnum, ticketDate: tdate,
       macLabel: '#80EAFF', winLabel: '#80EAFF',
-      prepareCard: M ? 'Use a Mac with macOS 12.4 or newer, add the game in Publisher Account, and copy the game’s API key.' : 'Use a Windows 10 (64-bit) PC, add the game in Publisher Account, and copy the game’s API key.',
+      prepareCard: M ? 'Use a Mac with macOS 12.4 or newer, add the game in Free to Play account, and copy the game’s API key.' : 'Use a Windows 10 (64-bit) PC, add the game in Free to Play account, and copy the game’s API key.',
       uploadTitle: 'Upload with the skill',
       scenario: scenario, isMac: M, isWin: !M,
       macBg: M ? '#80EAFF' : 'transparent', macFg: M ? '#141d1f' : '#d3dcde', winBg: !M ? '#80EAFF' : 'transparent', winFg: !M ? '#141d1f' : '#d3dcde',
       setMac: function () { self.setOs('mac'); }, setWin: function () { self.setOs('win'); },
       ctaText: M ? 'Once your build is in Draft and configured, the next separate step is Launcher, Edit launcher, Settings, Launcher build, Generate. For macOS one standalone installer is built, signed with an Xsolla certificate. Generation can take up to several hours, and it is unstable right now, so this Battle Path stops one step before it.'
                  : 'Once your build is in Draft and configured, the next separate step is Launcher, Edit launcher, Settings, Launcher build, Generate. For Windows two installers are built, a web one and a standalone one, signed with an Xsolla certificate. Generation can take up to several hours, and it is unstable right now, so this Battle Path stops one step before it.',
-      ticketRoute: 'Route: Publisher Account, Draft build, ' + (M ? 'macOS standalone installer' : 'Windows web and standalone installers') + '. Admit one game to testing.',
+      ticketRoute: 'Route: Free to Play account, Draft build, ' + (M ? 'macOS standalone installer' : 'Windows web and standalone installers') + '. Admit one game to testing.',
       cloudSay: cloudSay, cloudPop: this.state.cloudPop,
       prepareCount: cp, uploadCount: cu, verifyCount: cv,
       doneCount: total, pct: Math.round(xp / XQ_TOTAL * 100), statusLine: status,
