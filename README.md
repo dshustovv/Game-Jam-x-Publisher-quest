@@ -24,4 +24,6 @@ The Claude app accepts one skill per zip (one top-level folder with one `SKILL.m
 - `xsolla-launcher-upload.zip` (runs the upload for you, needs Claude Code or another place where Claude can run commands on your computer)
 - `xsolla-launcher-upload-guide.zip` (step-by-step guide for the Claude app, Cowork and mobile, where Claude cannot run commands)
 
+- `game-media-requirements.zip` (reference skill: image sizes and formats and game description requirements for Xsolla Launcher, Web Shop, Steam and itch.io; not part of the quest steps)
+
 `xsolla-skills.zip` holds both skills together and is only for unzipping into `~/.claude/skills` for Claude Code.
